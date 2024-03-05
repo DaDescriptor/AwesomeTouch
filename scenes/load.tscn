@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://dypw20w6mi6gu"]
+
+[ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="1_3dhc8"]
+[ext_resource type="Texture2D" uid="uid://kaborimfddyw" path="res://icons/atouch-logo.png" id="2_8175c"]
+[ext_resource type="FontFile" uid="uid://conbv0mijvvne" path="res://fonts/FiraMono-Bold.ttf" id="3_16yq0"]
+[ext_resource type="Theme" uid="uid://cgxevuwhf20u1" path="res://default_theme.tres" id="4_7jwf6"]
+[ext_resource type="Script" path="res://scripts/Version.gd" id="5_e41wn"]
+
+[sub_resource type="Theme" id="Theme_pvu42"]
+default_font = ExtResource("1_3dhc8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kscfq"]
+font = ExtResource("3_16yq0")
+font_size = 32
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ra5m5"]
+font = ExtResource("3_16yq0")
+font_size = 64
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[node name="Load" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pvu42")
+color = Color(0.117647, 0.117647, 0.180392, 1)
+
+[node name="Loading Bar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_7jwf6")
+theme_override_font_sizes/font_size = 32
+value = 50.0
+
+[node name="Version" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "version failed to load :("
+label_settings = SubResource("LabelSettings_kscfq")
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("5_e41wn")
+your_label = "version "
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Written by Ilyukhin Mikhail - Welcome!"
+label_settings = SubResource("LabelSettings_ra5m5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logo" type="TextureRect" parent="."]
+self_modulate = Color(0.803922, 0.839216, 0.956863, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -783.0
+offset_top = 75.0
+offset_right = 1304.0
+offset_bottom = 253.0
+grow_horizontal = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_8175c")
