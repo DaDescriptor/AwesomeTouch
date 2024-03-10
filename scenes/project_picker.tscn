@@ -1,0 +1,232 @@
+[gd_scene load_steps=13 format=3 uid="uid://wemfijwi7cnc"]
+
+[ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="1_pscn4"]
+[ext_resource type="Texture2D" uid="uid://daswy8ht8fc2x" path="res://icons/atouch-topbar.png" id="2_82ijl"]
+[ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_w1d0n"]
+[ext_resource type="Script" path="res://scripts/quit.gd" id="4_dmnvu"]
+[ext_resource type="Texture2D" uid="uid://coechovnp5shu" path="res://icons/material-search-tint.svg" id="4_kv74d"]
+[ext_resource type="Theme" uid="uid://cgxevuwhf20u1" path="res://themes/default_theme.tres" id="5_xy6mk"]
+[ext_resource type="PackedScene" uid="uid://c21tgrumql0de" path="res://scenes/project_button.tscn" id="7_ivfcu"]
+
+[sub_resource type="Theme" id="Theme_rtmft"]
+default_font = ExtResource("1_pscn4")
+
+[sub_resource type="LabelSettings" id="LabelSettings_c2ion"]
+font_size = 50
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ib2ka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dcn1p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5m85"]
+
+[node name="Project Picker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_rtmft")
+color = Color(0.117647, 0.117647, 0.180392, 1)
+
+[node name="Topbar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme = ExtResource("2_w1d0n")
+
+[node name="Logo" type="TextureRect" parent="Topbar"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 539.0
+offset_bottom = 62.0
+texture = ExtResource("2_82ijl")
+
+[node name="Header" type="Label" parent="Topbar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Projects"
+label_settings = SubResource("LabelSettings_c2ion")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="Topbar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -210.0
+offset_right = -10.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme = ExtResource("2_w1d0n")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+script = ExtResource("4_dmnvu")
+
+[node name="Guide" type="Button" parent="Topbar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_right = -220.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme = ExtResource("2_w1d0n")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 50
+text = "Help"
+icon_alignment = 1
+
+[node name="New" type="Button" parent="Topbar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -630.0
+offset_right = -430.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme = ExtResource("2_w1d0n")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 50
+text = "New"
+icon_alignment = 1
+
+[node name="Search" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = -20.0
+offset_bottom = 150.0
+grow_horizontal = 2
+
+[node name="Material-search-tint" type="TextureRect" parent="Search"]
+layout_mode = 0
+offset_right = 45.0
+offset_bottom = 46.0
+texture = ExtResource("4_kv74d")
+
+[node name="SearchContainer" type="HBoxContainer" parent="Search"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_right = -1658.0
+
+[node name="SearchQuery" type="LineEdit" parent="Search/SearchContainer"]
+layout_mode = 2
+theme = ExtResource("5_xy6mk")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ib2ka")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dcn1p")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_i5m85")
+placeholder_text = "Search..."
+expand_to_text_length = true
+select_all_on_focus = true
+
+[node name="FancyLine" type="ColorRect" parent="Search/SearchContainer/SearchQuery"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.498039, 0.517647, 0.611765, 1)
+
+[node name="Projects" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Projects"]
+layout_mode = 2
+theme = ExtResource("5_xy6mk")
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Projects/ScrollContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Project" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project2" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project3" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project4" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project5" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project6" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project7" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project8" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project9" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project10" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project11" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Project12" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
