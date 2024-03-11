@@ -124,6 +124,10 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7tw0"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
 bg_color = Color(0.803922, 0.839216, 0.956863, 1)
 corner_radius_top_left = 1024
 corner_radius_top_right = 1024
@@ -131,11 +135,17 @@ corner_radius_bottom_right = 1024
 corner_radius_bottom_left = 1024
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsu1y"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
 bg_color = Color(0.192157, 0.196078, 0.266667, 1)
 corner_radius_top_left = 1024
 corner_radius_top_right = 1024
 corner_radius_bottom_right = 1024
 corner_radius_bottom_left = 1024
+expand_margin_left = 4.0
+expand_margin_right = 4.0
 
 [resource]
 default_font = ExtResource("2_23crc")
