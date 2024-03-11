@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://wemfijwi7cnc"]
+[gd_scene load_steps=14 format=3 uid="uid://wemfijwi7cnc"]
 
 [ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="1_pscn4"]
 [ext_resource type="Texture2D" uid="uid://daswy8ht8fc2x" path="res://icons/atouch-topbar.png" id="2_82ijl"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/quit.gd" id="4_dmnvu"]
 [ext_resource type="Texture2D" uid="uid://coechovnp5shu" path="res://icons/material-search-tint.svg" id="4_kv74d"]
 [ext_resource type="Theme" uid="uid://cgxevuwhf20u1" path="res://themes/default_theme.tres" id="5_xy6mk"]
-[ext_resource type="PackedScene" uid="uid://c21tgrumql0de" path="res://scenes/project_button.tscn" id="7_ivfcu"]
+[ext_resource type="Script" path="res://scripts/v_container_scroll.gd" id="8_c5hir"]
 
 [sub_resource type="Theme" id="Theme_rtmft"]
 default_font = ExtResource("1_pscn4")
@@ -20,6 +20,10 @@ font_color = Color(0.803922, 0.839216, 0.956863, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dcn1p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5m85"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k8ynq"]
+font_size = 64
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
 
 [node name="Project Picker" type="Control"]
 layout_mode = 3
@@ -158,23 +162,24 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.498039, 0.517647, 0.611765, 1)
 
-[node name="Projects" type="MarginContainer" parent="."]
+[node name="Projects" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 30.0
 offset_top = 180.0
+offset_right = -30.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Projects"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("5_xy6mk")
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Projects/ScrollContainer"]
 custom_minimum_size = Vector2(500, 100)
@@ -183,50 +188,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="Project" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
+[node name="Label" type="Label" parent="Projects/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+text = "Nothing here!"
+label_settings = SubResource("LabelSettings_k8ynq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Project2" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
+[node name="ScrollBar" type="VScrollBar" parent="Projects" node_paths=PackedStringArray("scroll_container", "scroll_contents")]
 layout_mode = 2
-
-[node name="Project3" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Project4" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Project5" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Project6" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Project7" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Project8" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Project9" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Project10" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Project11" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Project12" parent="Projects/ScrollContainer/VBoxContainer" instance=ExtResource("7_ivfcu")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("8_c5hir")
+scroll_container = NodePath("../ScrollContainer")
+scroll_contents = NodePath("../ScrollContainer/VBoxContainer")

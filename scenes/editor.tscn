@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpufuq4f15wh3"]
+
+[ext_resource type="Texture2D" uid="uid://dj6ppt072l31t" path="res://development-shit/editor concept.png" id="1_b0h6l"]
+[ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
+
+[node name="Editor" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.180392, 1)
+
+[node name="EditorConcept" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1960.0
+offset_right = 4420.0
+offset_bottom = 1080.0
+texture = ExtResource("1_b0h6l")
+
+[node name="Topbar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+theme = ExtResource("2_8ib8j")
+
+[node name="LeftShortcuts" type="HBoxContainer" parent="Topbar"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_right = -1310.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="Topbar/LeftShortcuts"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="Topbar/LeftShortcuts"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" type="Button" parent="Topbar/LeftShortcuts"]
+layout_mode = 2
+size_flags_horizontal = 3
