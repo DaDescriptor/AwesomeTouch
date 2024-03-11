@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=8 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Texture2D" uid="uid://dj6ppt072l31t" path="res://development-shit/editor concept.png" id="1_b0h6l"]
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
+[ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_i2wsj"]
+[ext_resource type="Texture2D" uid="uid://bve2wbg3nwqj6" path="res://icons/redo.svg" id="4_y7unt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1tryx"]
+font_size = 40
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fosag"]
+font_size = 40
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g774v"]
+bg_color = Color(0.0666667, 0.0666667, 0.105882, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Editor" type="ColorRect"]
 anchors_preset = 15
@@ -25,25 +42,193 @@ anchor_right = 1.0
 offset_bottom = 80.0
 theme = ExtResource("2_8ib8j")
 
-[node name="LeftShortcuts" type="HBoxContainer" parent="Topbar"]
+[node name="TopbarContainer" type="HBoxContainer" parent="Topbar"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 10.0
-offset_right = -1310.0
+offset_right = -10.0
 offset_bottom = 70.0
 grow_horizontal = 2
 theme_override_constants/separation = 10
+
+[node name="LeftShortcuts" type="HBoxContainer" parent="Topbar/TopbarContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Button" type="Button" parent="Topbar/LeftShortcuts"]
+[node name="File" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button2" type="Button" parent="Topbar/LeftShortcuts"]
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/LeftShortcuts/File"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "File"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Run" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button3" type="Button" parent="Topbar/LeftShortcuts"]
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/LeftShortcuts/Run"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Run
+"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Peek" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/LeftShortcuts/Peek"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Peek"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScriptName" type="Label" parent="Topbar/TopbarContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "veryLongScriptName.lua"
+label_settings = SubResource("LabelSettings_fosag")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightShortcuts" type="HBoxContainer" parent="Topbar/TopbarContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Quit" type="Button" parent="Topbar/TopbarContainer/RightShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save" type="Button" parent="Topbar/TopbarContainer/RightShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Save"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Save"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Undo Redo" type="HBoxContainer" parent="Topbar/TopbarContainer/RightShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Undo" type="Button" parent="Topbar/TopbarContainer/RightShortcuts/Undo Redo"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/RightShortcuts/Undo Redo/Undo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_i2wsj")
+
+[node name="Redo" type="Button" parent="Topbar/TopbarContainer/RightShortcuts/Undo Redo"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/RightShortcuts/Undo Redo/Redo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_y7unt")
+
+[node name="EditorPanels" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 80.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="KeyboardLeft" type="Panel" parent="EditorPanels"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="Code" type="Panel" parent="EditorPanels"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_g774v")
+
+[node name="KeyboardRight" type="Panel" parent="EditorPanels"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
