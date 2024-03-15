@@ -1,6 +1,9 @@
 class_name LineCounter extends Label
+## A Label that follows a TextEdit and displays it's amount of lines,
+## like in a code editor.
 
 
+## TextEdit to follow.
 @export var text_edit: TextEdit
 
 func _process(_delta):
