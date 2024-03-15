@@ -457,7 +457,7 @@ horizontal_alignment = 2
 script = ExtResource("11_2rc23")
 text_edit = NodePath("../Textbox")
 
-[node name="Textbox" type="CodeEdit" parent="EditorPanels/Code/ScrollContainer/HBoxContainer"]
+[node name="Textbox" type="TextEdit" parent="EditorPanels/Code/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("11_bbu1r")
@@ -467,7 +467,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bp8tu")
 theme_override_styles/focus = SubResource("StyleBoxFlat_bp8tu")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_bp8tu")
 placeholder_text = "Welcome to Awesome Touch :)"
+context_menu_enabled = false
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
 wrap_mode = 1
+caret_blink = true
+draw_tabs = true
 
 [node name="KeyboardRight" type="Panel" parent="EditorPanels"]
 custom_minimum_size = Vector2(600, 0)
