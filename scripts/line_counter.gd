@@ -1,0 +1,17 @@
+class_name LineCounter extends Label
+
+
+@export var text_edit: TextEdit
+
+func _process(_delta):
+	if !text_edit:
+		return
+	
+	var lines: int = text_edit.get_line_count()
+	
+	text = ''
+	
+	for line in lines:
+		text = str(text, line+1, '\n')
+		# str() is basically godot's way of .. operator
+		# line+1 because indexes start from zero. why.

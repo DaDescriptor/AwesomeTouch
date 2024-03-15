@@ -1,10 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=23 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Texture2D" uid="uid://dj6ppt072l31t" path="res://development_shit/editor concept.png" id="1_b0h6l"]
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
 [ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_i2wsj"]
 [ext_resource type="Texture2D" uid="uid://bve2wbg3nwqj6" path="res://icons/redo.svg" id="4_y7unt"]
 [ext_resource type="Theme" uid="uid://c02hpjaridlrg" path="res://themes/keyboard_theme.tres" id="5_hk8dr"]
+[ext_resource type="Texture2D" uid="uid://cb3mk3xh3gn5i" path="res://icons/shift.svg" id="6_l03jd"]
+[ext_resource type="Texture2D" uid="uid://bailgidv6ut5k" path="res://icons/spacebar.svg" id="7_upwuq"]
+[ext_resource type="Texture2D" uid="uid://bj3g742n633uh" path="res://icons/move_cursor.svg" id="8_dcphv"]
+[ext_resource type="Texture2D" uid="uid://daswy8ht8fc2x" path="res://icons/atouch-topbar.png" id="9_grnas"]
+[ext_resource type="Texture2D" uid="uid://8hrbmo3ojvh1" path="res://icons/backspace.svg" id="10_6dmeg"]
+[ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="10_yqrjh"]
+[ext_resource type="Script" path="res://scripts/line_counter.gd" id="11_2rc23"]
+[ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="11_bbu1r"]
+[ext_resource type="Texture2D" uid="uid://0w4d1ppa2q8e" path="res://icons/enter.svg" id="11_m5lhl"]
+[ext_resource type="Texture2D" uid="uid://c63x1iwexeukj" path="res://icons/left_click.svg" id="12_nuces"]
+[ext_resource type="Texture2D" uid="uid://cm7wjbsfo00nn" path="res://icons/deselect.svg" id="13_nlbao"]
+[ext_resource type="Texture2D" uid="uid://dwoqd03gxbfit" path="res://icons/right_click.svg" id="14_2hh4e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1tryx"]
 font_size = 40
@@ -16,6 +28,20 @@ font_color = Color(0.803922, 0.839216, 0.956863, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g774v"]
 bg_color = Color(0.0666667, 0.0666667, 0.105882, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_c8pro"]
+line_spacing = 0.0
+font = ExtResource("10_yqrjh")
+font_size = 32
+font_color = Color(0.486275, 0.517647, 0.611765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp8tu"]
+bg_color = Color(0.0666667, 0.0666667, 0.105882, 1)
+draw_center = false
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -331,38 +357,65 @@ size_flags_horizontal = 3
 text = "g
 "
 
-[node name="ASDFG2" type="HBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
+[node name="ZXCV" type="HBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="A" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG2"]
+[node name="Shift" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "a"
+icon = ExtResource("6_l03jd")
+icon_alignment = 1
 
-[node name="S" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG2"]
+[node name="Z" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "s"
+text = "z"
 
-[node name="D" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG2"]
+[node name="X" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "d"
+text = "x"
 
-[node name="F" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG2"]
+[node name="C" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "f"
+text = "c"
 
-[node name="G" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG2"]
+[node name="V" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "g
-"
+text = "v"
 
-[node name="README" type="Node" parent="EditorPanels/KeyboardLeft/Keys"]
+[node name="Special" type="HBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Space" type="Button" parent="EditorPanels/KeyboardLeft/Keys/Special"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("7_upwuq")
+icon_alignment = 1
+
+[node name="Cursor Move" type="Button" parent="EditorPanels/KeyboardLeft/Keys/Special"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+icon = ExtResource("8_dcphv")
+icon_alignment = 1
+
+[node name="Logo" type="TextureRect" parent="EditorPanels/KeyboardLeft"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_grnas")
 
 [node name="Code" type="Panel" parent="EditorPanels"]
 custom_minimum_size = Vector2(600, 0)
@@ -370,7 +423,211 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_g774v")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorPanels/Code"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lines" type="Label" parent="EditorPanels/Code/HBoxContainer" node_paths=PackedStringArray("text_edit")]
+layout_mode = 2
+size_flags_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_c8pro")
+horizontal_alignment = 2
+script = ExtResource("11_2rc23")
+text_edit = NodePath("../Textbox")
+
+[node name="Textbox" type="CodeEdit" parent="EditorPanels/Code/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("11_bbu1r")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_bp8tu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bp8tu")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_bp8tu")
+placeholder_text = "Code here..."
+wrap_mode = 1
+
 [node name="KeyboardRight" type="Panel" parent="EditorPanels"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme = ExtResource("5_hk8dr")
+
+[node name="Keys" type="VBoxContainer" parent="EditorPanels/KeyboardRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="67890" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="6" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "6"
+
+[node name="7" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "7"
+
+[node name="8" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "8"
+
+[node name="9" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9"
+
+[node name="0" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="YUIOP" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Y" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "y"
+
+[node name="U" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "u"
+
+[node name="I" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "i"
+
+[node name="O" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "o"
+
+[node name="P" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "p"
+
+[node name="HJKL" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="H" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "h"
+
+[node name="J" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "j"
+
+[node name="K" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "k"
+
+[node name="L" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "l"
+
+[node name="Quotes" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "\""
+
+[node name="BNM" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="B" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "b"
+icon_alignment = 1
+
+[node name="N" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "n"
+
+[node name="M" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "m"
+
+[node name="Brackets" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "("
+
+[node name="Other" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "="
+
+[node name="Special" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Backspace" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+icon = ExtResource("10_6dmeg")
+icon_alignment = 1
+
+[node name="Return" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("11_m5lhl")
+icon_alignment = 1
+
+[node name="Special 2" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Left Click" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("12_nuces")
+icon_alignment = 1
+
+[node name="Deselect" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("13_nlbao")
+icon_alignment = 1
+
+[node name="Right Click" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("14_2hh4e")
+icon_alignment = 1
