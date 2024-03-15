@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=27 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Texture2D" uid="uid://dj6ppt072l31t" path="res://development_shit/editor concept.png" id="1_b0h6l"]
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
+[ext_resource type="Texture2D" uid="uid://0cf37phos3yl" path="res://icons/peek.svg" id="3_c4184"]
 [ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_i2wsj"]
 [ext_resource type="Texture2D" uid="uid://bve2wbg3nwqj6" path="res://icons/redo.svg" id="4_y7unt"]
+[ext_resource type="Texture2D" uid="uid://ded2dnfgtjqis" path="res://icons/run.svg" id="4_yo7jx"]
 [ext_resource type="Theme" uid="uid://c02hpjaridlrg" path="res://themes/keyboard_theme.tres" id="5_hk8dr"]
 [ext_resource type="Texture2D" uid="uid://cb3mk3xh3gn5i" path="res://icons/shift.svg" id="6_l03jd"]
 [ext_resource type="Texture2D" uid="uid://bailgidv6ut5k" path="res://icons/spacebar.svg" id="7_upwuq"]
@@ -108,40 +110,70 @@ label_settings = SubResource("LabelSettings_1tryx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Run" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts"]
+[node name="Edit" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Topbar/TopbarContainer/LeftShortcuts/Run"]
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/LeftShortcuts/Edit"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Run
-"
+text = "Edit"
 label_settings = SubResource("LabelSettings_1tryx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Peek" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts"]
+[node name="Run Peek" type="HBoxContainer" parent="Topbar/TopbarContainer/LeftShortcuts"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Topbar/TopbarContainer/LeftShortcuts/Peek"]
+[node name="Peek" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek/Peek"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Peek"
-label_settings = SubResource("LabelSettings_1tryx")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("3_c4184")
+
+[node name="Run" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek/Run"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_yo7jx")
 
 [node name="ScriptName" type="Label" parent="Topbar/TopbarContainer"]
 custom_minimum_size = Vector2(0, 70)
@@ -157,40 +189,6 @@ custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
-
-[node name="Quit" type="Button" parent="Topbar/TopbarContainer/RightShortcuts"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Quit"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Quit"
-label_settings = SubResource("LabelSettings_1tryx")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Save" type="Button" parent="Topbar/TopbarContainer/RightShortcuts"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Save"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Save"
-label_settings = SubResource("LabelSettings_1tryx")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Undo Redo" type="HBoxContainer" parent="Topbar/TopbarContainer/RightShortcuts"]
 custom_minimum_size = Vector2(0, 70)
@@ -239,6 +237,40 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_y7unt")
+
+[node name="Quit" type="Button" parent="Topbar/TopbarContainer/RightShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save" type="Button" parent="Topbar/TopbarContainer/RightShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Save"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Save"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EditorPanels" type="HBoxContainer" parent="."]
 layout_mode = 1
