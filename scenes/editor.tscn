@@ -28,7 +28,7 @@ font_size = 40
 font_color = Color(0.803922, 0.839216, 0.956863, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_u1rli"]
-font_size = 20
+font_size = 24
 font_color = Color(0.803922, 0.839216, 0.956863, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g774v"]
@@ -421,11 +421,11 @@ texture = ExtResource("9_grnas")
 
 [node name="Version" type="Label" parent="EditorPanels/KeyboardLeft/Keys/Credits"]
 layout_mode = 2
-text = "with <3 by DaDescriptor | version unknown :("
+text = "version unknown :("
 label_settings = SubResource("LabelSettings_u1rli")
 horizontal_alignment = 1
 script = ExtResource("10_3ph6r")
-your_label = "with <3 by DaDescriptor | version "
+your_label = "version "
 
 [node name="Code" type="Panel" parent="EditorPanels"]
 clip_contents = true
