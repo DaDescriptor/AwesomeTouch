@@ -19,6 +19,10 @@ boot_splash/image="res://splash.png"
 boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+EditorGlobals="*res://custom_classes/editor_globals.gd"
+
 [display]
 
 window/size/viewport_width=1920

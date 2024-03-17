@@ -1,6 +1,5 @@
-[gd_scene load_steps=27 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=26 format=3 uid="uid://dpufuq4f15wh3"]
 
-[ext_resource type="Texture2D" uid="uid://dj6ppt072l31t" path="res://development_shit/editor concept.png" id="1_b0h6l"]
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
 [ext_resource type="Texture2D" uid="uid://0cf37phos3yl" path="res://icons/peek.svg" id="3_c4184"]
 [ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_i2wsj"]
@@ -11,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bailgidv6ut5k" path="res://icons/spacebar.svg" id="7_upwuq"]
 [ext_resource type="Texture2D" uid="uid://bj3g742n633uh" path="res://icons/move_cursor.svg" id="8_dcphv"]
 [ext_resource type="Texture2D" uid="uid://daswy8ht8fc2x" path="res://icons/atouch-topbar.png" id="9_grnas"]
-[ext_resource type="Script" path="res://scripts/version.gd" id="10_3ph6r"]
+[ext_resource type="Script" path="res://custom_classes/version.gd" id="10_3ph6r"]
 [ext_resource type="Texture2D" uid="uid://8hrbmo3ojvh1" path="res://icons/backspace.svg" id="10_6dmeg"]
 [ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="10_yqrjh"]
-[ext_resource type="Script" path="res://scripts/line_counter.gd" id="11_2rc23"]
+[ext_resource type="Script" path="res://custom_classes/line_counter.gd" id="11_2rc23"]
 [ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="11_bbu1r"]
 [ext_resource type="Texture2D" uid="uid://0w4d1ppa2q8e" path="res://icons/enter.svg" id="11_m5lhl"]
 [ext_resource type="Texture2D" uid="uid://c63x1iwexeukj" path="res://icons/left_click.svg" id="12_nuces"]
@@ -54,20 +53,22 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="Editor" type="ColorRect"]
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.117647, 0.117647, 0.180392, 1)
-
-[node name="EditorConcept" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 1960.0
-offset_right = 4420.0
-offset_bottom = 1080.0
-texture = ExtResource("1_b0h6l")
 
 [node name="Topbar" type="Panel" parent="."]
 layout_mode = 1
@@ -306,11 +307,6 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_constants/separation = 10
-
-[node name="1" type="Button" parent="EditorPanels/KeyboardLeft/Keys/12345"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "1"
 
 [node name="2" type="Button" parent="EditorPanels/KeyboardLeft/Keys/12345"]
 layout_mode = 2
