@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=31 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
 [ext_resource type="Texture2D" uid="uid://0cf37phos3yl" path="res://icons/peek.svg" id="3_c4184"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://custom_classes/key_shift.gd" id="9_uiaqm"]
 [ext_resource type="Script" path="res://custom_classes/version.gd" id="10_3ph6r"]
 [ext_resource type="Texture2D" uid="uid://8hrbmo3ojvh1" path="res://icons/backspace.svg" id="10_6dmeg"]
+[ext_resource type="Texture2D" uid="uid://v7furbhpgvl5" path="res://icons/shift_on.svg" id="10_hbwpk"]
 [ext_resource type="Texture2D" uid="uid://b0ho02vc85io6" path="res://icons/caps_lock.svg" id="10_skwhg"]
 [ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="10_yqrjh"]
 [ext_resource type="Script" path="res://custom_classes/line_counter.gd" id="11_2rc23"]
@@ -424,6 +425,7 @@ icon = ExtResource("6_l03jd")
 icon_alignment = 1
 script = ExtResource("9_uiaqm")
 icon_off = ExtResource("6_l03jd")
+icon_on = ExtResource("10_hbwpk")
 icon_caps = ExtResource("10_skwhg")
 
 [node name="Z" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
