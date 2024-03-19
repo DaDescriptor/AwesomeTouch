@@ -6,10 +6,10 @@ extends Node
 ## If 1, key.gd should reset to 0 when pressed.
 @export var shift_state: int = 0 :
 	set(value):
-		if value < 0 or value > 2:
-			# gatekeeping incorrect values :)
-			push_error("value is < 0 or > 2")
-			return
+		if value < 0:
+			value = 2 # wrap the value
+		if value > 2:
+			value = 0 # good luck debugging
 		shift_state = value
 		shift_state_changed.emit(value)
 
