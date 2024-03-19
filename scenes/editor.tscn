@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=32 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
 [ext_resource type="Texture2D" uid="uid://0cf37phos3yl" path="res://icons/peek.svg" id="3_c4184"]
@@ -7,11 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://ded2dnfgtjqis" path="res://icons/run.svg" id="4_yo7jx"]
 [ext_resource type="Theme" uid="uid://c02hpjaridlrg" path="res://themes/keyboard_theme.tres" id="5_hk8dr"]
 [ext_resource type="Texture2D" uid="uid://cb3mk3xh3gn5i" path="res://icons/shift.svg" id="6_l03jd"]
-[ext_resource type="Script" path="res://custom_classes/key.gd" id="7_ofdo7"]
+[ext_resource type="Script" path="res://custom_classes/keys/key.gd" id="7_ofdo7"]
 [ext_resource type="Texture2D" uid="uid://bailgidv6ut5k" path="res://icons/spacebar.svg" id="7_upwuq"]
 [ext_resource type="Texture2D" uid="uid://bj3g742n633uh" path="res://icons/move_cursor.svg" id="8_dcphv"]
 [ext_resource type="Texture2D" uid="uid://daswy8ht8fc2x" path="res://icons/atouch-topbar.png" id="9_grnas"]
-[ext_resource type="Script" path="res://custom_classes/key_shift.gd" id="9_uiaqm"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_shift.gd" id="9_uiaqm"]
 [ext_resource type="Script" path="res://custom_classes/version.gd" id="10_3ph6r"]
 [ext_resource type="Texture2D" uid="uid://8hrbmo3ojvh1" path="res://icons/backspace.svg" id="10_6dmeg"]
 [ext_resource type="Texture2D" uid="uid://v7furbhpgvl5" path="res://icons/shift_on.svg" id="10_hbwpk"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cm7wjbsfo00nn" path="res://icons/deselect.svg" id="13_nlbao"]
 [ext_resource type="Texture2D" uid="uid://dwoqd03gxbfit" path="res://icons/right_click.svg" id="14_2hh4e"]
 [ext_resource type="Script" path="res://scripts/code_textedit.gd" id="16_hxs6d"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_return.gd" id="22_i3el5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1tryx"]
 font_size = 40
@@ -708,9 +709,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("11_m5lhl")
 icon_alignment = 1
-script = ExtResource("7_ofdo7")
-letter = "\\n"
-shifted_letter = "\\n"
+script = ExtResource("22_i3el5")
 
 [node name="Special 2" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
 custom_minimum_size = Vector2(0, 150)
