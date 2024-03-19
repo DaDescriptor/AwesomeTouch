@@ -331,8 +331,7 @@ script = ExtResource("7_ofdo7")
 [node name="4" type="Button" parent="EditorPanels/KeyboardLeft/Keys/12345"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "4
-"
+text = "4"
 script = ExtResource("7_ofdo7")
 
 [node name="5" type="Button" parent="EditorPanels/KeyboardLeft/Keys/12345"]
@@ -408,8 +407,7 @@ script = ExtResource("7_ofdo7")
 [node name="G" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "g
-"
+text = "g"
 script = ExtResource("7_ofdo7")
 
 [node name="ZXCV" type="HBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
