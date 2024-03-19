@@ -15,6 +15,8 @@ func _process(_delta):
 	text = ''
 	
 	for line in lines:
-		text = str(text, line+1, '\n')
+		text = str(text, line+1, "\n")
+		for wrap in text_edit.get_line_wrap_count(line):
+			text = str(text, "\n")
 		# str() is basically godot's way of .. operator
 		# line+1 because indexes start from zero. why.
