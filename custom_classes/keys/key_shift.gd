@@ -1,4 +1,4 @@
-extends Node
+class_name ShiftKey extends Button
 
 ## Icon displayed when shift is not pressed
 @export var icon_off: Texture2D

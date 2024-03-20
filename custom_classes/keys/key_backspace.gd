@@ -1,4 +1,4 @@
-extends Node
+class_name BackspaceKey extends Button
 
 
 func _pressed():

@@ -33,6 +33,10 @@ window/size/mode=2
 
 project/assembly_name="Awesome Touch"
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [internationalization]
 
 locale/locale_filter_mode=0

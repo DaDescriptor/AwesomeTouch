@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=34 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
 [ext_resource type="Texture2D" uid="uid://0cf37phos3yl" path="res://icons/peek.svg" id="3_c4184"]
@@ -22,8 +22,10 @@
 [ext_resource type="Texture2D" uid="uid://0w4d1ppa2q8e" path="res://icons/enter.svg" id="11_m5lhl"]
 [ext_resource type="Texture2D" uid="uid://c63x1iwexeukj" path="res://icons/left_click.svg" id="12_nuces"]
 [ext_resource type="Texture2D" uid="uid://cm7wjbsfo00nn" path="res://icons/deselect.svg" id="13_nlbao"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_scroller.gd" id="14_0dpuu"]
 [ext_resource type="Texture2D" uid="uid://dwoqd03gxbfit" path="res://icons/right_click.svg" id="14_2hh4e"]
 [ext_resource type="Script" path="res://scripts/code_textedit.gd" id="16_hxs6d"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_backspace.gd" id="21_e1i78"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_return.gd" id="22_i3el5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1tryx"]
@@ -469,6 +471,8 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 icon = ExtResource("8_dcphv")
 icon_alignment = 1
+script = ExtResource("14_0dpuu")
+sensitivity = null
 
 [node name="Credits" type="VBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
 layout_mode = 2
@@ -703,6 +707,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 icon = ExtResource("10_6dmeg")
 icon_alignment = 1
+script = ExtResource("21_e1i78")
 
 [node name="Return" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
 layout_mode = 2
