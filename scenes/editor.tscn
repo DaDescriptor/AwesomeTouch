@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cb3mk3xh3gn5i" path="res://icons/shift.svg" id="6_l03jd"]
 [ext_resource type="Script" path="res://custom_classes/keys/key.gd" id="7_ofdo7"]
 [ext_resource type="Texture2D" uid="uid://bailgidv6ut5k" path="res://icons/spacebar.svg" id="7_upwuq"]
-[ext_resource type="Texture2D" uid="uid://bj3g742n633uh" path="res://icons/move_cursor.svg" id="8_dcphv"]
 [ext_resource type="Texture2D" uid="uid://daswy8ht8fc2x" path="res://icons/atouch-topbar.png" id="9_grnas"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_shift.gd" id="9_uiaqm"]
 [ext_resource type="Script" path="res://custom_classes/version.gd" id="10_3ph6r"]
@@ -22,10 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://0w4d1ppa2q8e" path="res://icons/enter.svg" id="11_m5lhl"]
 [ext_resource type="Texture2D" uid="uid://c63x1iwexeukj" path="res://icons/left_click.svg" id="12_nuces"]
 [ext_resource type="Texture2D" uid="uid://cm7wjbsfo00nn" path="res://icons/deselect.svg" id="13_nlbao"]
-[ext_resource type="Script" path="res://custom_classes/keys/key_scroller.gd" id="14_0dpuu"]
 [ext_resource type="Texture2D" uid="uid://dwoqd03gxbfit" path="res://icons/right_click.svg" id="14_2hh4e"]
 [ext_resource type="Script" path="res://scripts/code_textedit.gd" id="16_hxs6d"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_backspace.gd" id="21_e1i78"]
+[ext_resource type="Script" path="res://custom_classes/caret.gd" id="21_smq4f"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_return.gd" id="22_i3el5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1tryx"]
@@ -60,6 +59,10 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_svtxn"]
+font_size = 32
+font_color = Color(0.552941, 0.552941, 0.568627, 1)
 
 [node name="Editor" type="Control"]
 layout_mode = 3
@@ -296,6 +299,7 @@ theme_override_constants/separation = 10
 [node name="KeyboardLeft" type="Panel" parent="EditorPanels"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 theme = ExtResource("5_hk8dr")
 
 [node name="Keys" type="VBoxContainer" parent="EditorPanels/KeyboardLeft"]
@@ -465,25 +469,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("7_upwuq")
 icon_alignment = 1
+script = ExtResource("7_ofdo7")
+letter = " "
+shifted_letter = " "
 
-[node name="Cursor Move" type="Button" parent="EditorPanels/KeyboardLeft/Keys/Special"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-icon = ExtResource("8_dcphv")
-icon_alignment = 1
-script = ExtResource("14_0dpuu")
-sensitivity = null
-
-[node name="Credits" type="VBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
+[node name="Autocomplete" type="VBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_constants/separation = 10
 
-[node name="Logo" type="TextureRect" parent="EditorPanels/KeyboardLeft/Keys/Credits"]
+[node name="Logo" type="TextureRect" parent="EditorPanels/KeyboardLeft/Keys/Autocomplete"]
 layout_mode = 2
 texture = ExtResource("9_grnas")
 
-[node name="Version" type="Label" parent="EditorPanels/KeyboardLeft/Keys/Credits"]
+[node name="Version" type="Label" parent="EditorPanels/KeyboardLeft/Keys/Autocomplete"]
 layout_mode = 2
 text = "version unknown :("
 label_settings = SubResource("LabelSettings_u1rli")
@@ -538,12 +537,33 @@ wrap_mode = 1
 autowrap_mode = 1
 scroll_fit_content_height = true
 caret_blink = true
+caret_draw_when_editable_disabled = true
+caret_mid_grapheme = true
 draw_tabs = true
 script = ExtResource("16_hxs6d")
+
+[node name="Caret" type="Control" parent="EditorPanels/Code"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 647.0
+offset_right = 679.0
+offset_bottom = 32.0
+script = ExtResource("21_smq4f")
+
+[node name="Label" type="Label" parent="EditorPanels/Code/Caret"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "_"
+label_settings = SubResource("LabelSettings_svtxn")
 
 [node name="KeyboardRight" type="Panel" parent="EditorPanels"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 theme = ExtResource("5_hk8dr")
 
 [node name="Keys" type="VBoxContainer" parent="EditorPanels/KeyboardRight"]
