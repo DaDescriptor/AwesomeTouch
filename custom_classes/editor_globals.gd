@@ -16,6 +16,8 @@ extends Node
 ## The said TextEdit must be set on its own.
 @export var text_edit: TextEdit
 
+@export var project_list_container: Node
+
 # SIGNALS
 ## Fires when shift_state is changed
 signal shift_state_changed(new_state: int)
