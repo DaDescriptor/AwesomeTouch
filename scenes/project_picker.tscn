@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://wemfijwi7cnc"]
+[gd_scene load_steps=17 format=3 uid="uid://wemfijwi7cnc"]
 
 [ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="1_pscn4"]
 [ext_resource type="Script" path="res://custom_classes/project_picker.gd" id="2_8fcsc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="5_xy6mk"]
 [ext_resource type="Script" path="res://custom_classes/v_container_scroll.gd" id="8_c5hir"]
 [ext_resource type="Script" path="res://custom_classes/project_list_container.gd" id="8_ixgs2"]
+[ext_resource type="Script" path="res://custom_classes/no_projects_label.gd" id="9_uuwej"]
 
 [sub_resource type="Theme" id="Theme_rtmft"]
 default_font = ExtResource("1_pscn4")
@@ -130,7 +131,7 @@ offset_right = -20.0
 offset_bottom = 150.0
 grow_horizontal = 2
 
-[node name="Material-search-tint" type="TextureRect" parent="Search"]
+[node name="SearchIcon" type="TextureRect" parent="Search"]
 layout_mode = 0
 offset_right = 45.0
 offset_bottom = 46.0
@@ -193,12 +194,13 @@ size_flags_vertical = 3
 theme_override_constants/separation = 10
 script = ExtResource("8_ixgs2")
 
-[node name="Label" type="Label" parent="Projects/ScrollContainer/VBoxContainer"]
+[node name="NoProjectsLabel" type="Label" parent="Projects/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Nothing here!"
 label_settings = SubResource("LabelSettings_k8ynq")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("9_uuwej")
 
 [node name="ScrollBar" type="VScrollBar" parent="Projects" node_paths=PackedStringArray("scroll_container", "scroll_contents")]
 layout_mode = 2

@@ -23,3 +23,4 @@ func _process(_dt):
 	page = scroll_container.size.y
 	
 	scroll_container.scroll_vertical = value
+	# LINTER SHUT THE FUCK UP

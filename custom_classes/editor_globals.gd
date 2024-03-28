@@ -13,10 +13,14 @@ extends Node
 		shift_state_changed.emit(value)
 
 ## TextEdit containing the code.
-## The said TextEdit must be set on its own.
 @export var text_edit: TextEdit
 
+## Container that lists projects.
 @export var project_list_container: Node
+
+## List of projects in format of [[name, path], [name, path], ...].
+## Used by project picker buttons
+@export var projects: Array
 
 # SIGNALS
 ## Fires when shift_state is changed

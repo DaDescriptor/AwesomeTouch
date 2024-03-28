@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EditorGlobals="*res://custom_classes/editor_globals.gd"
+DialogManager="*res://custom_classes/dialog.gd"
 
 [display]
 
