@@ -9,5 +9,5 @@ class_name VersionLabel extends Label
 func _ready():
 	var file = FileAccess.open("res://version.txt", FileAccess.READ)
 	var version = file.get_as_text()
-	
+
 	text = your_label+version

@@ -22,7 +22,7 @@ func _pressed():
 	if text_edit == null:
 		text_edit = EditorGlobals.text_edit
 		if text_edit == null:
-			push_error("text_edit is not set. It should have a script that 
+			push_error("text_edit is not set. It should have a script that
 			assigns itself to EditorGlobals.text_edit.")
 	if letter == null or letter == "":
 		print("letter is not set, trying to autoset..")
@@ -32,11 +32,11 @@ func _pressed():
 		print("shifted_letter is not set, trying to autoset..")
 		shifted_letter = letter.to_upper()
 		print(str("shifted_letter is now set to ", shifted_letter))
-	
+
 	text_edit.insert_text_at_caret(letter if EditorGlobals.shift_state == 0 else shifted_letter, -1)
 	# insert letter if shift is not pressed, otherwise insert shifted_letter
 	# second argument is caret id, -1 means all carets
-	
+
 	if EditorGlobals.shift_state == 1:
 		# reset shift state if it was not caps locked
 		EditorGlobals.shift_state = 0

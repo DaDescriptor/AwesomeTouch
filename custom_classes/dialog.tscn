@@ -7,6 +7,7 @@ font_size = 64
 font_color = Color(0.803922, 0.839216, 0.956863, 1)
 
 [node name="Dialog" type="Control"]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

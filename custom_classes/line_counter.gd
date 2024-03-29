@@ -9,11 +9,11 @@ class_name LineCounter extends Label
 func _process(_delta):
 	if !text_edit:
 		return
-	
+
 	var lines: int = text_edit.get_line_count()
-	
+
 	text = ''
-	
+
 	for line in lines:
 		text = str(text, line+1, "\n")
 		for _line_wrap in text_edit.get_line_wrap_count(line):

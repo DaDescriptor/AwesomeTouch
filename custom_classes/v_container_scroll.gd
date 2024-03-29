@@ -18,9 +18,9 @@ func _process(_dt):
 		scroll_contents = scroll_container.get_child(0) # i hate 0 index
 		if scroll_contents == null:
 			push_error("Failed to find missing Scroll Contents. set it manually moron")
-	
+
 	max_value = scroll_contents.size.y
 	page = scroll_container.size.y
-	
+
 	scroll_container.scroll_vertical = value
 	# LINTER SHUT THE FUCK UP

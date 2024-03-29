@@ -24,7 +24,7 @@ func _process(_delta):
 		print("not pressed")
 		return
 	scrolled_amount += Input.get_last_mouse_velocity()
-	
+
 	## how much columns got scrolled.
 	## example: sensitivity is 50, scrolled_amount is (-125, 23).
 	## full_scrolls will be (-2, 0)
@@ -32,13 +32,13 @@ func _process(_delta):
 		fit_x_into_y(sensitivity, scrolled_amount.x),
 		fit_x_into_y(sensitivity, scrolled_amount.y)
 	)
-	
+
 	print(str(
-		"scrolled: ", scrolled_amount, 
+		"scrolled: ", scrolled_amount,
 		"\nsensitivity: ", sensitivity,
 		"\nfull scrolls: ", full_scrolls
 	))
-	
+
 	if full_scrolls.x != 0:
 		scrolled_amount.x = 0
 		EditorGlobals.text_edit.set_caret_column(main_caret_only().x+full_scrolls.x)

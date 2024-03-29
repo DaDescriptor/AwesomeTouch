@@ -1,4 +1,4 @@
-class_name ReturnKey extends Button 
+class_name ReturnKey extends Button
 
 
 func _pressed():
