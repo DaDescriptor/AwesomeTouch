@@ -18,9 +18,12 @@ extends Node
 ## Container that lists projects.
 @export var project_list_container: Node
 
-## List of projects in format of [[name, path], [name, path], ...].
+## List of projects in format of "name": {"path": "/storage/..."}
 ## Used by project picker buttons
-@export var projects: Array
+@export var projects: Dictionary
+
+## Project currently loaded in. (in form of {name: "123", path: "/storage/..."})
+@export var current_project: Dictionary
 
 # SIGNALS
 ## Fires when shift_state is changed
