@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=35 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
 [ext_resource type="Texture2D" uid="uid://0cf37phos3yl" path="res://icons/peek.svg" id="3_c4184"]
 [ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_i2wsj"]
+[ext_resource type="Script" path="res://custom_classes/script_label.gd" id="4_8idgx"]
 [ext_resource type="Texture2D" uid="uid://bve2wbg3nwqj6" path="res://icons/redo.svg" id="4_y7unt"]
 [ext_resource type="Texture2D" uid="uid://ded2dnfgtjqis" path="res://icons/run.svg" id="4_yo7jx"]
 [ext_resource type="Theme" uid="uid://c02hpjaridlrg" path="res://themes/keyboard_theme.tres" id="5_hk8dr"]
@@ -195,6 +196,7 @@ text = "veryLongScriptName.lua"
 label_settings = SubResource("LabelSettings_fosag")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("4_8idgx")
 
 [node name="RightShortcuts" type="HBoxContainer" parent="Topbar/TopbarContainer"]
 custom_minimum_size = Vector2(600, 0)
@@ -711,22 +713,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "("
 
-[node name="Other" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+[node name="Backspace" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-text = "="
+icon = ExtResource("10_6dmeg")
+icon_alignment = 1
+script = ExtResource("21_e1i78")
 
 [node name="Special" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Backspace" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
+[node name="Other" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-icon = ExtResource("10_6dmeg")
-icon_alignment = 1
-script = ExtResource("21_e1i78")
+text = "="
 
 [node name="Return" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
 layout_mode = 2

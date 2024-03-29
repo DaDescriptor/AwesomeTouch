@@ -18,20 +18,26 @@ class_name Key extends Button
 ## If not set will turn `noshift_text` into caps.
 @export var shift_text: String
 
-func _pressed():
+func _gui_input(event):
+	if !event is InputEventScreenTouch:
+		return # other events don't have .pressed
+	if !event.pressed:
+		return
+		# using this instead of _pressed() allows for multitouch
+		# with this the editor experience feels way smoother :)
+	
 	if text_edit == null:
 		text_edit = EditorGlobals.text_edit
 		if text_edit == null:
-			push_error("text_edit is not set. It should have a script that
-			assigns itself to EditorGlobals.text_edit.")
+			Log.write("EditorGlobals.text_edit is not set!", Log.MESSAGE_TYPE.ERROR)
 	if letter == null or letter == "":
-		print("letter is not set, trying to autoset..")
+		Log.write("Letter is not set, trying to autoset..")
 		letter = text
-		print(str("letter is now set to ", letter))
+		Log.write(str("letter is now set to ", letter))
 	if shifted_letter == null or shifted_letter == "":
-		print("shifted_letter is not set, trying to autoset..")
+		Log.write("shifted_letter is not set, trying to autoset..")
 		shifted_letter = letter.to_upper()
-		print(str("shifted_letter is now set to ", shifted_letter))
+		Log.write(str("shifted_letter is now set to ", shifted_letter))
 
 	text_edit.insert_text_at_caret(letter if EditorGlobals.shift_state == 0 else shifted_letter, -1)
 	# insert letter if shift is not pressed, otherwise insert shifted_letter

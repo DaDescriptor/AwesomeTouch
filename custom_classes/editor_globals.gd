@@ -28,7 +28,11 @@ extends Node
 ## Current logfile's name. (Log 2024 3 29_10 52 3.txt)
 @export var log_name: String
 
+## Editor version. (version.txt is now deprecated luckily :D)
 @export var version: String = ProjectSettings.get_setting_with_override("application/config/version")
+
+## Full path to the file that is currently edited
+@export var current_file: String
 
 # SIGNALS
 ## Fires when shift_state is changed

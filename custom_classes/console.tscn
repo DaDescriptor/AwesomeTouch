@@ -37,7 +37,7 @@ vertical_alignment = 1
 script = ExtResource("2_1vols")
 
 [node name="Close" type="Button" parent="Header" node_paths=PackedStringArray("console")]
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 icon = ExtResource("2_mrkbr")
 flat = true

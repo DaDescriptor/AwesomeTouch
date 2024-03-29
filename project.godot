@@ -15,6 +15,7 @@ config/description="Awesome Touch is a Love2D IDE for Android."
 config/version="Prototype 1"
 run/main_scene="res://scenes/editor.tscn"
 config/auto_accept_quit=false
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(0.0666667, 0.0666667, 0.105882, 1)
 boot_splash/image="res://splash.png"
@@ -37,6 +38,11 @@ window/size/mode=2
 [dotnet]
 
 project/assembly_name="Awesome Touch"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [internationalization]
 
