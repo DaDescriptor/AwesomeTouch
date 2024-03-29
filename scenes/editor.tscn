@@ -543,10 +543,9 @@ draw_tabs = true
 script = ExtResource("16_hxs6d")
 
 [node name="Caret" type="Control" parent="EditorPanels/Code"]
-layout_mode = 2
+layout_mode = 1
 anchors_preset = 0
-offset_left = 647.0
-offset_right = 679.0
+offset_right = 32.0
 offset_bottom = 32.0
 script = ExtResource("21_smq4f")
 

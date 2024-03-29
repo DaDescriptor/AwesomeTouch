@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Awesome Touch"
 config/description="Awesome Touch is a Love2D IDE for Android."
+config/version="Prototype 1"
 run/main_scene="res://scenes/editor.tscn"
 config/auto_accept_quit=false
 config/features=PackedStringArray("4.2", "Mobile")
@@ -19,6 +20,7 @@ boot_splash/bg_color=Color(0.0666667, 0.0666667, 0.105882, 1)
 boot_splash/image="res://splash.png"
 boot_splash/fullsize=false
 config/icon="res://icon.svg"
+config/version.debug="Prototype 1 [DEBUG]"
 
 [autoload]
 

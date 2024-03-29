@@ -50,9 +50,6 @@ func _ready():
 		DirAccess.make_dir_recursive_absolute("storage/emulated/0/.atouch/logs")
 		# we should store logs somewhere right
 	
-	var version_file = FileAccess.open("res://version.txt", FileAccess.READ)
-	var version = version_file.get_as_text()
-	
 	var datetime = Time.get_datetime_dict_from_system()
 	var logname = str(
 		"Log ",
@@ -69,7 +66,7 @@ func _ready():
 	EditorGlobals.log_name = logname
 	
 	handle = FileAccess.open(str("/storage/emulated/0/.atouch/logs/", logname), FileAccess.WRITE)
-	write(str("AwesomeTouch v.", version," - welcome!"), MESSAGE_TYPE.PRINT)
+	write(str("AwesomeTouch v.", EditorGlobals.version," - welcome!"), MESSAGE_TYPE.PRINT)
 
 func create_console():
 	if console == null:
