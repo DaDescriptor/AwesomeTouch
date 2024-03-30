@@ -1,4 +1,4 @@
-class_name NoProjectsLabel extends Label
+class_name NoProjectsLabel extends Control
 ## Will appear if it has no brother nodes, will disappear otherwise.
 
 func _process(_delta):

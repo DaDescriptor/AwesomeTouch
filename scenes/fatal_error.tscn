@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://220wuqgq6yr0"]
+[gd_scene load_steps=5 format=3 uid="uid://220wuqgq6yr0"]
 
 [ext_resource type="FontFile" uid="uid://conbv0mijvvne" path="res://fonts/FiraMono-Bold.ttf" id="1_05x5u"]
-[ext_resource type="Script" path="res://custom_classes/logname.gd" id="1_h55h0"]
 [ext_resource type="Script" path="res://custom_classes/quit.gd" id="2_jlmwi"]
 [ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="2_yf8we"]
 
@@ -26,7 +25,7 @@ grow_vertical = 2
 
 [node name="Header" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "whoops.."
+text = "Fatal error!"
 label_settings = SubResource("LabelSettings_tr2bc")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -42,10 +41,10 @@ theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/bold_italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
 bbcode_enabled = true
-text = "[b]A fatal error has occured.[/b] Log files were saved at [code]/storage/emulated/0/.atouch/logs/%s[/code].
+text = "The editor crashed with message: %s
+
 If you keep encountering this, please open a GitHub issue with your logs included. (https://github.com/DaDescriptor/AwesomeTouch)
-If you can't find .atouch, try enabling hidden files."
-script = ExtResource("1_h55h0")
+On Android, logs are saved at ~/.atouch/logs. If you can't find .atouch, try enabling hidden files."
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2

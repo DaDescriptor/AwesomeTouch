@@ -1,0 +1,198 @@
+[gd_scene load_steps=12 format=3 uid="uid://bljlcit5kebtl"]
+
+[ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="1_6arlv"]
+[ext_resource type="Script" path="res://custom_classes/dir_name.gd" id="2_sihll"]
+[ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_f50qw"]
+[ext_resource type="Texture2D" uid="uid://bve2wbg3nwqj6" path="res://icons/redo.svg" id="4_it1gl"]
+[ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="5_4dms4"]
+[ext_resource type="Script" path="res://custom_classes/project_list_container.gd" id="6_a4ett"]
+[ext_resource type="Script" path="res://custom_classes/no_projects_label.gd" id="7_fgow5"]
+[ext_resource type="Script" path="res://custom_classes/v_container_scroll.gd" id="8_cqwor"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yi5k6"]
+font_size = 40
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ysjq"]
+font_size = 40
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b8ira"]
+font_size = 64
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[node name="FileManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.180392, 1)
+
+[node name="Topbar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme = ExtResource("1_6arlv")
+
+[node name="TopbarContainer" type="HBoxContainer" parent="Topbar"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_right = -10.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="DirName" type="Label" parent="Topbar/TopbarContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "/directory/will/show/here"
+label_settings = SubResource("LabelSettings_yi5k6")
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("2_sihll")
+
+[node name="Shortcuts" type="HBoxContainer" parent="Topbar/TopbarContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Back Forward" type="HBoxContainer" parent="Topbar/TopbarContainer/Shortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Undo" type="Button" parent="Topbar/TopbarContainer/Shortcuts/Back Forward"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/Shortcuts/Back Forward/Undo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f50qw")
+
+[node name="Redo" type="Button" parent="Topbar/TopbarContainer/Shortcuts/Back Forward"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/Shortcuts/Back Forward/Redo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_it1gl")
+
+[node name="Up" type="Button" parent="Topbar/TopbarContainer/Shortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/Shortcuts/Up"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Up"
+label_settings = SubResource("LabelSettings_0ysjq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="New" type="Button" parent="Topbar/TopbarContainer/Shortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/Shortcuts/New"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "New"
+label_settings = SubResource("LabelSettings_0ysjq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Files" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 180.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Files"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_4dms4")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Files/ScrollContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+script = ExtResource("6_a4ett")
+
+[node name="EmptyLabel" type="Label" parent="Files/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Nothing here!"
+label_settings = SubResource("LabelSettings_b8ira")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_fgow5")
+
+[node name="ScrollBar" type="VScrollBar" parent="Files" node_paths=PackedStringArray("scroll_container", "scroll_contents")]
+layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("8_cqwor")
+scroll_container = NodePath("")
+scroll_contents = NodePath("")
