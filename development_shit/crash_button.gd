@@ -2,4 +2,4 @@ extends Button
 
 
 func _pressed():
-	Log.write("Sussy amongus", Log.MESSAGE_TYPE.FATAL)
+	Fatal.error("Sussy amongus")

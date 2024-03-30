@@ -30,15 +30,15 @@ func _gui_event(event):
 	if text_edit == null:
 		text_edit = EditorGlobals.text_edit
 		if text_edit == null:
-			Log.write("EditorGlobals.text_edit is not set!", Log.MESSAGE_TYPE.FATAL)
+			print("EditorGlobals.text_edit is not set!")
 	if letter == null or letter == "":
-		Log.write("Letter is not set, trying to autoset..")
+		print("Letter is not set, trying to autoset..")
 		letter = text
-		Log.write(str("letter is now set to ", letter))
+		print(str("letter is now set to ", letter))
 	if shifted_letter == null or shifted_letter == "":
-		Log.write("shifted_letter is not set, trying to autoset..")
+		print("shifted_letter is not set, trying to autoset..")
 		shifted_letter = letter.to_upper()
-		Log.write(str("shifted_letter is now set to ", shifted_letter))
+		print(str("shifted_letter is now set to ", shifted_letter))
 
 	text_edit.insert_text_at_caret(letter if EditorGlobals.shift_state == 0 else shifted_letter, -1)
 	# insert letter if shift is not pressed, otherwise insert shifted_letter

@@ -34,6 +34,17 @@ extends Node
 ## Full path to the file that is currently edited
 @export var current_file: String
 
+## Full path to the directiory that is currently explored in FM
+@export var current_dir: String :
+	set(value):
+		current_dir = value
+		short_dir = str(current_dir.erase(0, current_project.path.length()), "/")
+		# add "/" so it looks like /src/123/ instead of src/123/
+
+## Path to current_dir without the project path (current_project.path).
+## For displaying.
+@export var short_dir: String
+
 # SIGNALS
 ## Fires when shift_state is changed
 signal shift_state_changed(new_state: int)

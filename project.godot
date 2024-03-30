@@ -13,10 +13,11 @@ config_version=5
 config/name="Awesome Touch"
 config/description="Awesome Touch is a Love2D IDE for Android."
 config/version="Prototype 1"
-run/main_scene="res://development_shit/crash.tscn"
+run/main_scene="res://scenes/project_picker.tscn"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "Mobile")
+run/low_processor_mode=true
 boot_splash/bg_color=Color(0.0666667, 0.0666667, 0.105882, 1)
 boot_splash/image="res://splash.png"
 boot_splash/fullsize=false
@@ -27,8 +28,14 @@ config/version.debug="Prototype 1 [DEBUG]"
 
 EditorGlobals="*res://custom_classes/editor_globals.gd"
 DialogManager="*res://custom_classes/dialog.gd"
-Log="*res://custom_classes/log.gd"
 Infobox="*res://custom_classes/infobox.gd"
+Fatal="*res://custom_classes/fatal.gd"
+ConfirmExit="res://custom_classes/confirm_exit.gd"
+
+[debug]
+
+file_logging/enable_file_logging=true
+file_logging/log_path.android="/storage/emulated/0/.atouch/logs"
 
 [display]
 
@@ -47,6 +54,11 @@ pointing/emulate_touch_from_mouse=true
 [internationalization]
 
 locale/locale_filter_mode=0
+
+[logging]
+
+save_path="user://logs"
+save_path.android="/storage/emulated/0/.atouch/logs"
 
 [rendering]
 
