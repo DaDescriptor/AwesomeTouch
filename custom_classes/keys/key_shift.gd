@@ -12,8 +12,21 @@ var doubleclick_timer: float
 ## How much time is given for doubleclick to enable caps
 @export var doubleclick_timeout: float = 0.5
 
-func _gui_event(event):
-	if !event is InputEventScreenTouch:
+
+func update_icon(_value = null):
+	match EditorGlobals.shift_state:
+		0:
+			self.icon = icon_off
+		1:
+			self.icon = icon_on
+		2:
+			self.icon = icon_caps
+
+func _ready():
+	EditorGlobals.shift_state_changed.connect(update_icon)
+
+func _gui_input(event):
+	if !(event is InputEventScreenTouch) and !(event is InputEventMouseButton):
 		return # other events don't have .pressed
 	if !event.pressed:
 		return
@@ -24,20 +37,18 @@ func _gui_event(event):
 		# basically wrap around 0 and 1 but move to 2 if doubleclicked
 		0:
 			EditorGlobals.shift_state = 1
-			self.icon = icon_on
 			doubleclick_timer = 0.5 # start timer to enable caps
 		1:
 			if doubleclick_timer > 0:
 				# doubleclicked in time
 				EditorGlobals.shift_state = 2
-				self.icon = icon_caps
 			else:
 				# loser
 				EditorGlobals.shift_state = 0
-				self.icon = icon_off
 		2:
 			EditorGlobals.shift_state = 0
-			self.icon = icon_off
+	
+	update_icon()
 
 func _process(delta):
 	doubleclick_timer -= delta

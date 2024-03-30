@@ -19,8 +19,8 @@ class_name Key extends Button
 @export var shift_text: String
 
 
-func _gui_event(event):
-	if !event is InputEventScreenTouch:
+func _gui_input(event):
+	if !(event is InputEventScreenTouch) and !(event is InputEventMouseButton):
 		return # other events don't have .pressed, will crash
 	if !event.pressed:
 		return

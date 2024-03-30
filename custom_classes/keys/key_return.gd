@@ -1,8 +1,8 @@
 class_name ReturnKey extends Button
 
 
-func _gui_event(event):
-	if !event is InputEventScreenTouch:
+func _gui_input(event):
+	if !(event is InputEventScreenTouch) and !(event is InputEventMouseButton):
 		return # other events don't have .pressed
 	if !event.pressed:
 		return
