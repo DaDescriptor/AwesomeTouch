@@ -12,7 +12,14 @@ var doubleclick_timer: float
 ## How much time is given for doubleclick to enable caps
 @export var doubleclick_timeout: float = 0.5
 
-func _pressed():
+func _gui_event(event):
+	if !event is InputEventScreenTouch:
+		return # other events don't have .pressed
+	if !event.pressed:
+		return
+		# using this instead of _pressed() allows for multitouch
+		# with this the editor experience feels way smoother :)
+	
 	match EditorGlobals.shift_state:
 		# basically wrap around 0 and 1 but move to 2 if doubleclicked
 		0:

@@ -13,7 +13,7 @@ config_version=5
 config/name="Awesome Touch"
 config/description="Awesome Touch is a Love2D IDE for Android."
 config/version="Prototype 1"
-run/main_scene="res://scenes/editor.tscn"
+run/main_scene="res://development_shit/crash.tscn"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "Mobile")
@@ -28,6 +28,7 @@ config/version.debug="Prototype 1 [DEBUG]"
 EditorGlobals="*res://custom_classes/editor_globals.gd"
 DialogManager="*res://custom_classes/dialog.gd"
 Log="*res://custom_classes/log.gd"
+Infobox="*res://custom_classes/infobox.gd"
 
 [display]
 
@@ -42,7 +43,6 @@ project/assembly_name="Awesome Touch"
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
 
 [internationalization]
 

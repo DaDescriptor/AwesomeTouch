@@ -18,9 +18,10 @@ class_name Key extends Button
 ## If not set will turn `noshift_text` into caps.
 @export var shift_text: String
 
-func _gui_input(event):
+
+func _gui_event(event):
 	if !event is InputEventScreenTouch:
-		return # other events don't have .pressed
+		return # other events don't have .pressed, will crash
 	if !event.pressed:
 		return
 		# using this instead of _pressed() allows for multitouch
@@ -29,7 +30,7 @@ func _gui_input(event):
 	if text_edit == null:
 		text_edit = EditorGlobals.text_edit
 		if text_edit == null:
-			Log.write("EditorGlobals.text_edit is not set!", Log.MESSAGE_TYPE.ERROR)
+			Log.write("EditorGlobals.text_edit is not set!", Log.MESSAGE_TYPE.FATAL)
 	if letter == null or letter == "":
 		Log.write("Letter is not set, trying to autoset..")
 		letter = text

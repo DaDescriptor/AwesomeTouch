@@ -7,6 +7,8 @@ var handle: FileAccess # handle used to write log files
 var console_prefab = preload("res://custom_classes/console.tscn")
 var console
 
+var fatal_prefab = preload("res://scenes/fatal_error.tscn")
+
 var dialog_visible = false
 
 enum MESSAGE_TYPE {
@@ -34,6 +36,7 @@ func _notification(what):
 			if opinion == "console":
 				open_console()
 			elif opinion == "exit":
+				write("Exiting!")
 				get_tree().quit()
 			dialog_visible = false
 		
@@ -88,3 +91,22 @@ func write(text: String, type: MESSAGE_TYPE = MESSAGE_TYPE.PRINT):
 	))
 	
 	print(type, " ", text)
+	handle.store_line(str(type, " ",
+		Time.get_time_string_from_system(), " ",
+		text
+	))
+	
+	handle.flush()
+	
+	if type == MESSAGE_TYPE.FATAL:
+		handle.store_line("\nFatal error occured; exiting!")
+		
+		for node in get_tree().root.get_children():
+			if node.name != "Log":
+				node.queue_free()
+				# delete everything except for this singleton
+		
+		var fatal = fatal_prefab.instantiate()
+		get_tree().root.add_child(fatal)
+		
+		self.queue_free()
