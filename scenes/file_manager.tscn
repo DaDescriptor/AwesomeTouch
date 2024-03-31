@@ -1,25 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://bljlcit5kebtl"]
+[gd_scene load_steps=9 format=3 uid="uid://dttmtguw7couk"]
 
+[ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="1_2ots1"]
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="1_6arlv"]
-[ext_resource type="Script" path="res://custom_classes/dir_name.gd" id="2_sihll"]
-[ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_f50qw"]
-[ext_resource type="Texture2D" uid="uid://bve2wbg3nwqj6" path="res://icons/redo.svg" id="4_it1gl"]
+[ext_resource type="Theme" uid="uid://ba1c1w12o643t" path="res://themes/filepick_theme.tres" id="2_4ow2f"]
+[ext_resource type="Script" path="res://custom_classes/project_label.gd" id="4_el6we"]
 [ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="5_4dms4"]
-[ext_resource type="Script" path="res://custom_classes/project_list_container.gd" id="6_a4ett"]
-[ext_resource type="Script" path="res://custom_classes/no_projects_label.gd" id="7_fgow5"]
-[ext_resource type="Script" path="res://custom_classes/v_container_scroll.gd" id="8_cqwor"]
+[ext_resource type="Script" path="res://custom_classes/project_list_container.gd" id="6_i18dw"]
+[ext_resource type="Script" path="res://custom_classes/v_container_scroll.gd" id="7_hukh3"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_yi5k6"]
-font_size = 40
-font_color = Color(0.803922, 0.839216, 0.956863, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_0ysjq"]
-font_size = 40
-font_color = Color(0.803922, 0.839216, 0.956863, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_qckg5"]
-font_size = 64
-font_color = Color(0.345098, 0.356863, 0.439216, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_uu5ef"]
+font = ExtResource("1_2ots1")
+font_size = 50
 
 [node name="FileManager" type="Control"]
 layout_mode = 3
@@ -57,106 +48,24 @@ offset_bottom = 70.0
 grow_horizontal = 2
 theme_override_constants/separation = 10
 
-[node name="DirName" type="Label" parent="Topbar/TopbarContainer"]
-custom_minimum_size = Vector2(0, 70)
+[node name="ProjectLabel" type="Label" parent="Topbar/TopbarContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "/directory/will/show/here"
-label_settings = SubResource("LabelSettings_yi5k6")
-horizontal_alignment = 2
-vertical_alignment = 1
-clip_text = true
-script = ExtResource("2_sihll")
-
-[node name="Shortcuts" type="HBoxContainer" parent="Topbar/TopbarContainer"]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Back Forward" type="HBoxContainer" parent="Topbar/TopbarContainer/Shortcuts"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 10
-
-[node name="Undo" type="Button" parent="Topbar/TopbarContainer/Shortcuts/Back Forward"]
-layout_mode = 2
-size_flags_horizontal = 3
-icon_alignment = 1
-expand_icon = true
-
-[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/Shortcuts/Back Forward/Undo"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.5
-offset_top = -25.0
-offset_right = 26.5
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_f50qw")
-
-[node name="Redo" type="Button" parent="Topbar/TopbarContainer/Shortcuts/Back Forward"]
-layout_mode = 2
-size_flags_horizontal = 3
-icon_alignment = 1
-expand_icon = true
-
-[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/Shortcuts/Back Forward/Redo"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.5
-offset_top = -25.0
-offset_right = 26.5
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_it1gl")
-
-[node name="Up" type="Button" parent="Topbar/TopbarContainer/Shortcuts"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Topbar/TopbarContainer/Shortcuts/Up"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Up"
-label_settings = SubResource("LabelSettings_0ysjq")
+size_flags_vertical = 1
+text = "Project Name Here"
+label_settings = SubResource("LabelSettings_uu5ef")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("4_el6we")
 
-[node name="New" type="Button" parent="Topbar/TopbarContainer/Shortcuts"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(1920, 1080)
+theme = ExtResource("2_4ow2f")
+ok_button_text = "Открыть"
+file_mode = 0
 
-[node name="Label" type="Label" parent="Topbar/TopbarContainer/Shortcuts/New"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "New"
-label_settings = SubResource("LabelSettings_0ysjq")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Files" type="HBoxContainer" parent="."]
+[node name="Options" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -168,41 +77,29 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Files"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_4dms4")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Files/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/ScrollContainer"]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 10
-script = ExtResource("6_a4ett")
+script = ExtResource("6_i18dw")
 
-[node name="EmptyLabel" type="Control" parent="Files/ScrollContainer/VBoxContainer"]
+[node name="EditFile" type="Button" parent="Options/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("7_fgow5")
+theme_override_font_sizes/font_size = 32
+text = "Open a file.."
 
-[node name="Label" type="Label" parent="Files/ScrollContainer/VBoxContainer/EmptyLabel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "how empty.."
-label_settings = SubResource("LabelSettings_qckg5")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScrollBar" type="VScrollBar" parent="Files" node_paths=PackedStringArray("scroll_container", "scroll_contents")]
+[node name="ScrollBar" type="VScrollBar" parent="Options" node_paths=PackedStringArray("scroll_container", "scroll_contents")]
 layout_mode = 2
 size_flags_horizontal = 8
-script = ExtResource("8_cqwor")
+script = ExtResource("7_hukh3")
 scroll_container = NodePath("")
 scroll_contents = NodePath("")

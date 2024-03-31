@@ -38,7 +38,7 @@ extends Node
 @export var current_dir: String :
 	set(value):
 		current_dir = value
-		short_dir = str(current_dir.erase(0, current_project.path.length()), "/")
+		short_dir = str("/", current_dir.erase(0, current_project.path.length()))
 		# add "/" so it looks like /src/123/ instead of src/123/
 
 ## Path to current_dir without the project path (current_project.path).

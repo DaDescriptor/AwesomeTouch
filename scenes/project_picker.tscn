@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://wemfijwi7cnc"]
+[gd_scene load_steps=18 format=3 uid="uid://wemfijwi7cnc"]
 
 [ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="1_pscn4"]
 [ext_resource type="Script" path="res://custom_classes/project_picker.gd" id="2_8fcsc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://custom_classes/quit.gd" id="4_dmnvu"]
 [ext_resource type="Texture2D" uid="uid://coechovnp5shu" path="res://icons/material-search-tint.svg" id="4_kv74d"]
 [ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="5_xy6mk"]
+[ext_resource type="Script" path="res://custom_classes/new_project_button.gd" id="7_w1lyn"]
 [ext_resource type="Script" path="res://custom_classes/v_container_scroll.gd" id="8_c5hir"]
 [ext_resource type="Script" path="res://custom_classes/project_list_container.gd" id="8_ixgs2"]
 [ext_resource type="Script" path="res://custom_classes/no_projects_label.gd" id="9_uuwej"]
@@ -120,6 +121,7 @@ theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 50
 text = "New"
 icon_alignment = 1
+script = ExtResource("7_w1lyn")
 
 [node name="Search" type="Control" parent="."]
 layout_mode = 1
@@ -194,7 +196,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 10
 script = ExtResource("8_ixgs2")
 
-[node name="NoProjectsLabel" type="Label" parent="Projects/ScrollContainer/VBoxContainer"]
+[node name="NoProjectsLabel" type="Label" parent="Projects/ScrollContainer/VBoxContainer" groups=["ignore_project"]]
 layout_mode = 2
 text = "Nothing here!"
 label_settings = SubResource("LabelSettings_k8ynq")

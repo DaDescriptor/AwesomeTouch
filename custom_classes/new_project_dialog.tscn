@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://coi243bbrdw1w"]
+[gd_scene load_steps=10 format=3 uid="uid://coi243bbrdw1w"]
 
 [ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="1_dx76f"]
 [ext_resource type="Script" path="res://custom_classes/location_manager.gd" id="2_xl776"]
 [ext_resource type="Texture2D" uid="uid://dkqq30qcir0et" path="res://icons/directory.svg" id="2_y77u7"]
 [ext_resource type="Theme" uid="uid://ba1c1w12o643t" path="res://themes/filepick_theme.tres" id="3_et2it"]
 [ext_resource type="PackedScene" uid="uid://bv03pptpeilx0" path="res://custom_classes/dialog_button.tscn" id="5_ysl1s"]
+[ext_resource type="Script" path="res://custom_classes/free_parent.gd" id="6_33a2a"]
+[ext_resource type="Script" path="res://custom_classes/new_project.gd" id="6_umhae"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3101"]
 font_size = 96
@@ -122,13 +124,18 @@ layout_mode = 2
 size_flags_vertical = 8
 columns = 2
 
-[node name="Create" parent="VBoxContainer/Options" instance=ExtResource("5_ysl1s")]
+[node name="Create" parent="VBoxContainer/Options" node_paths=PackedStringArray("project_name", "project_location") instance=ExtResource("5_ysl1s")]
 layout_mode = 2
 text = "Create"
+script = ExtResource("6_umhae")
+project_name = NodePath("../../Body/Name/Value")
+project_location = NodePath("../../Body/Location/Value")
 
-[node name="Cancel" parent="VBoxContainer/Options" instance=ExtResource("5_ysl1s")]
+[node name="Cancel" parent="VBoxContainer/Options" node_paths=PackedStringArray("node") instance=ExtResource("5_ysl1s")]
 layout_mode = 2
 text = "Cancel"
+script = ExtResource("6_33a2a")
+node = NodePath("../../..")
 
 [connection signal="dir_selected" from="VBoxContainer/Body/Location/FileDialog" to="VBoxContainer/Body/Location" method="on_dir_selected"]
 [connection signal="pressed" from="VBoxContainer/Body/Location/Set" to="VBoxContainer/Body/Location" method="show_picker"]
