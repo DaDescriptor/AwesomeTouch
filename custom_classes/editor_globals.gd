@@ -23,19 +23,22 @@ extends Node
 @export var projects: Dictionary
 
 ## Project currently loaded in. (in form of {name: "123", path: "/storage/..."})
-@export var current_project: Dictionary
+@export var current_project: Dictionary = {"name": "UNKNOWN PROJECT", "path": "UNKNOWN PATH"}
 
 ## Current logfile's name. (Log 2024 3 29_10 52 3.txt)
-@export var log_name: String
+@export var log_name: String = "UNKNOWN LOG NAME"
 
 ## Editor version. (version.txt is now deprecated luckily :D)
 @export var version: String = ProjectSettings.get_setting_with_override("application/config/version")
 
 ## Full path to the file that is currently edited
-@export var current_file: String
+@export var current_file: String = "FILE NOT LOADED" :
+	set(value):
+		current_file = value
+		short_file = value.get_file()
 
 ## Full path to the directiory that is currently explored in FM
-@export var current_dir: String :
+@export var current_dir: String = "DIRECTORY NOT LOADED" :
 	set(value):
 		current_dir = value
 		short_dir = str("/", current_dir.erase(0, current_project.path.length()))
@@ -43,7 +46,10 @@ extends Node
 
 ## Path to current_dir without the project path (current_project.path).
 ## For displaying.
-@export var short_dir: String
+@export var short_dir: String = "DIRECTORY NOT LOADED"
+
+## Just the filename
+@export var short_file: String = "FILE NOT LOADED"
 
 # SIGNALS
 ## Fires when shift_state is changed

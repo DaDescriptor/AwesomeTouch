@@ -253,12 +253,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_y7unt")
 
-[node name="Quit" type="Button" parent="Topbar/TopbarContainer/RightShortcuts" node_paths=PackedStringArray("node")]
+[node name="Quit" type="Button" parent="Topbar/TopbarContainer/RightShortcuts"]
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_plcpv")
-node = NodePath("../../../..")
 
 [node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Quit"]
 layout_mode = 1

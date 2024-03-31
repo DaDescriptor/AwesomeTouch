@@ -17,6 +17,7 @@ font_size = 32
 font_color = Color(0.803922, 0.839216, 0.956863, 1)
 
 [node name="Project" type="Panel"]
+custom_minimum_size = Vector2(0, 100)
 offset_right = 1920.0
 offset_bottom = 100.0
 size_flags_horizontal = 3

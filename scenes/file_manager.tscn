@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dttmtguw7couk"]
+[gd_scene load_steps=11 format=3 uid="uid://dttmtguw7couk"]
 
 [ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="1_2ots1"]
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="1_6arlv"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://custom_classes/project_label.gd" id="4_el6we"]
 [ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="5_4dms4"]
 [ext_resource type="Script" path="res://custom_classes/project_list_container.gd" id="6_i18dw"]
+[ext_resource type="Script" path="res://custom_classes/edit_file.gd" id="6_uxpmf"]
 [ext_resource type="Script" path="res://custom_classes/v_container_scroll.gd" id="7_hukh3"]
+[ext_resource type="Script" path="res://custom_classes/file_selector.gd" id="8_5lejb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uu5ef"]
 font = ExtResource("1_2ots1")
@@ -58,13 +60,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_el6we")
 
-[node name="FileDialog" type="FileDialog" parent="."]
-title = "Open a File"
-size = Vector2i(1920, 1080)
-theme = ExtResource("2_4ow2f")
-ok_button_text = "Открыть"
-file_mode = 0
-
 [node name="Options" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -96,10 +91,22 @@ script = ExtResource("6_i18dw")
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Open a file.."
+script = ExtResource("6_uxpmf")
+
+[node name="FileDialog" type="FileDialog" parent="Options/ScrollContainer/VBoxContainer/EditFile"]
+title = "Open a File"
+size = Vector2i(1920, 1080)
+theme = ExtResource("2_4ow2f")
+ok_button_text = "Открыть"
+file_mode = 0
+access = 2
+script = ExtResource("8_5lejb")
 
 [node name="ScrollBar" type="VScrollBar" parent="Options" node_paths=PackedStringArray("scroll_container", "scroll_contents")]
 layout_mode = 2
 size_flags_horizontal = 8
 script = ExtResource("7_hukh3")
-scroll_container = NodePath("")
-scroll_contents = NodePath("")
+scroll_container = NodePath("../ScrollContainer")
+scroll_contents = NodePath("../ScrollContainer/VBoxContainer")
+
+[connection signal="file_selected" from="Options/ScrollContainer/VBoxContainer/EditFile/FileDialog" to="Options/ScrollContainer/VBoxContainer/EditFile" method="_on_file_dialog_file_selected"]

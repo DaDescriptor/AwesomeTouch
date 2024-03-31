@@ -14,7 +14,7 @@ func load_projects():
 	for child in project_container.get_children():
 		# remove all list entries so they won't be duplicated
 		if "ignore_project" in child.get_groups():
-			return # do not delete the label showing there is no projects
+			continue # do not delete the label showing there is no projects
 			# it will hide itself if there are any other entries
 		
 		child.queue_free() # what a silly way to pronounce "delete"
@@ -49,23 +49,17 @@ func load_projects():
 	
 	for project in list:
 		if typeof(project) != TYPE_DICTIONARY:
-			# project entries consist of {name: "123", path: "/storage/..."}
-			push_error(str(
-				"Project parsing denied: not a dictionary",
-				"\nType: ", type_string(project),
-				"\nValue: ", project
-			))
-			return
+			continue
 		
 		print(project)
 		
 		var button = project_button.instantiate()
 		project_container.add_child(button)
 		
-		button.get_node(button["Name"]).text = project.name
+		button.get_node("Name").text = project.name
 		button.name = project.name
 		
-		project_list.project.name = {
+		project_list[project.name] = {
 			"path": project.path
 		}
 	
