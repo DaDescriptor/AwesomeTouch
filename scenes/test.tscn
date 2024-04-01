@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgtk54ene4fh0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vbkr5"]
+font_size = 64
+
+[node name="Test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 155.0
+offset_top = 3.0
+offset_right = -256.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "hi this thing is needed to test if compiling on android works. IT FUCKING DOESNT"
+label_settings = SubResource("LabelSettings_vbkr5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

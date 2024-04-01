@@ -94,11 +94,9 @@ text = "Open a file.."
 script = ExtResource("6_uxpmf")
 
 [node name="FileDialog" type="FileDialog" parent="Options/ScrollContainer/VBoxContainer/EditFile"]
-title = "Open a File"
 size = Vector2i(1920, 1080)
 theme = ExtResource("2_4ow2f")
-ok_button_text = "Открыть"
-file_mode = 0
+ok_button_text = "Сохранить"
 access = 2
 script = ExtResource("8_5lejb")
 

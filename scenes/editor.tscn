@@ -1,6 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=38 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
+[ext_resource type="Script" path="res://custom_classes/editor_peek.gd" id="2_uplno"]
 [ext_resource type="Texture2D" uid="uid://0cf37phos3yl" path="res://icons/peek.svg" id="3_c4184"]
 [ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_i2wsj"]
 [ext_resource type="Script" path="res://custom_classes/script_label.gd" id="4_8idgx"]
@@ -12,6 +13,7 @@
 [ext_resource type="Script" path="res://custom_classes/free_parent_confirm.gd" id="7_plcpv"]
 [ext_resource type="Texture2D" uid="uid://bailgidv6ut5k" path="res://icons/spacebar.svg" id="7_upwuq"]
 [ext_resource type="Texture2D" uid="uid://daswy8ht8fc2x" path="res://icons/atouch-topbar.png" id="9_grnas"]
+[ext_resource type="Script" path="res://custom_classes/editor_save.gd" id="9_nj88w"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_shift.gd" id="9_uiaqm"]
 [ext_resource type="Script" path="res://custom_classes/version.gd" id="10_3ph6r"]
 [ext_resource type="Texture2D" uid="uid://8hrbmo3ojvh1" path="res://icons/backspace.svg" id="10_6dmeg"]
@@ -147,11 +149,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="Peek" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek"]
+[node name="Peek" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek" node_paths=PackedStringArray("hide_in_peek")]
 layout_mode = 2
 size_flags_horizontal = 3
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("2_uplno")
+hide_in_peek = [NodePath("../../../../../EditorPanels/KeyboardLeft"), NodePath("../../../../../EditorPanels/KeyboardRight")]
 
 [node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek/Peek"]
 layout_mode = 1
@@ -276,6 +280,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("9_nj88w")
 
 [node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Save"]
 layout_mode = 1
