@@ -1,1 +1,1 @@
-This branch contains the project which, for some reason, crashes the app on start.
+This branch contains the latest version which crashes due to FUCKING SEGFAULT. I'M OUTTA THIS SHIT. 
