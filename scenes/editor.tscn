@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=39 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
 [ext_resource type="Script" path="res://custom_classes/editor_peek.gd" id="2_uplno"]
@@ -25,8 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://0w4d1ppa2q8e" path="res://icons/enter.svg" id="11_m5lhl"]
 [ext_resource type="Texture2D" uid="uid://c63x1iwexeukj" path="res://icons/left_click.svg" id="12_nuces"]
 [ext_resource type="Texture2D" uid="uid://cm7wjbsfo00nn" path="res://icons/deselect.svg" id="13_nlbao"]
-[ext_resource type="Texture2D" uid="uid://dwoqd03gxbfit" path="res://icons/right_click.svg" id="14_2hh4e"]
 [ext_resource type="Script" path="res://custom_classes/code_textedit.gd" id="16_hxs6d"]
+[ext_resource type="Texture2D" uid="uid://bj3g742n633uh" path="res://icons/move_cursor.svg" id="17_mh54j"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_scroller.gd" id="18_xcf3j"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_backspace.gd" id="21_e1i78"]
 [ext_resource type="Script" path="res://custom_classes/caret.gd" id="21_smq4f"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_return.gd" id="22_i3el5"]
@@ -483,6 +484,13 @@ script = ExtResource("7_ofdo7")
 letter = " "
 shifted_letter = " "
 
+[node name="MoveCursor" type="Button" parent="EditorPanels/KeyboardLeft/Keys/Special"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+icon = ExtResource("17_mh54j")
+icon_alignment = 1
+script = ExtResource("18_xcf3j")
+
 [node name="Autocomplete" type="VBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
 layout_mode = 2
 size_flags_vertical = 10
@@ -750,8 +758,7 @@ custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Left Click" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Select" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("12_nuces")
@@ -761,10 +768,4 @@ icon_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("13_nlbao")
-icon_alignment = 1
-
-[node name="Right Click" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
-layout_mode = 2
-size_flags_horizontal = 3
-icon = ExtResource("14_2hh4e")
 icon_alignment = 1

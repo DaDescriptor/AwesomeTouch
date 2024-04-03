@@ -3,7 +3,7 @@ class_name Caret extends Control
 ## dirty hack, i'm covered in shit
 
 ## Controls how fast will the cursor blink, set by EditorGlobals.
-var blink_speed: float = 0.5
+var blink_speed: float = EditorGlobals.blink_speed
 ## Self-explanatory.
 var blink_timer: float = blink_speed
 

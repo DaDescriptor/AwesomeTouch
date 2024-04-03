@@ -2,7 +2,7 @@ class_name ReturnKey extends Button
 
 
 func _gui_input(event):
-	if !(event is InputEventScreenTouch) and !(event is InputEventMouseButton):
+	if !(event is InputEventScreenTouch):
 		return # other events don't have .pressed
 	if !event.pressed:
 		return

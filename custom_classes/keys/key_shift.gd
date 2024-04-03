@@ -26,7 +26,7 @@ func _ready():
 	EditorGlobals.shift_state_changed.connect(update_icon)
 
 func _gui_input(event):
-	if !(event is InputEventScreenTouch) and !(event is InputEventMouseButton):
+	if !(event is InputEventScreenTouch):
 		return # other events don't have .pressed
 	if !event.pressed:
 		return

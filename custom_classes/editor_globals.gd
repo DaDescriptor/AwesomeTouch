@@ -51,6 +51,9 @@ extends Node
 ## Just the filename
 @export var short_file: String = "FILE NOT LOADED"
 
+## Editor cursor blink speed
+@export var blink_speed: float = 0
+
 # SIGNALS
 ## Fires when shift_state is changed
 signal shift_state_changed(new_state: int)
