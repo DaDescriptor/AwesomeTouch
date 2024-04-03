@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://daswy8ht8fc2x" path="res://icons/atouch-topbar.png" id="2_82ijl"]
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_w1d0n"]
 [ext_resource type="Script" path="res://custom_classes/quit.gd" id="4_dmnvu"]
-[ext_resource type="Texture2D" uid="uid://coechovnp5shu" path="res://icons/material-search-tint.svg" id="4_kv74d"]
+[ext_resource type="Texture2D" uid="uid://chya6wlb0ev55" path="res://icons/search.svg" id="4_kv74d"]
 [ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="5_xy6mk"]
 [ext_resource type="Script" path="res://custom_classes/new_project_button.gd" id="7_w1lyn"]
 [ext_resource type="Script" path="res://custom_classes/v_container_scroll.gd" id="8_c5hir"]
@@ -134,10 +134,13 @@ offset_bottom = 150.0
 grow_horizontal = 2
 
 [node name="SearchIcon" type="TextureRect" parent="Search"]
-layout_mode = 0
-offset_right = 45.0
-offset_bottom = 46.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1830.0
 texture = ExtResource("4_kv74d")
+expand_mode = 4
 
 [node name="SearchContainer" type="HBoxContainer" parent="Search"]
 layout_mode = 1

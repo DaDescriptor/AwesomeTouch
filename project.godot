@@ -13,7 +13,7 @@ config_version=5
 config/name="Awesome Touch"
 config/description="Awesome Touch is a Love2D IDE for Android."
 config/version="Prototype 1"
-run/main_scene="res://scenes/test.tscn"
+run/main_scene="res://scenes/project_picker.tscn"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "Mobile")
@@ -34,8 +34,7 @@ ConfirmExit="res://custom_classes/confirm_exit.gd"
 
 [debug]
 
-file_logging/enable_file_logging=true
-file_logging/log_path.android="/storage/emulated/0/.atouch/logs"
+gdscript/warnings/enable=false
 
 [display]
 
@@ -50,11 +49,6 @@ project/assembly_name="Awesome Touch"
 [internationalization]
 
 locale/locale_filter_mode=0
-
-[logging]
-
-save_path="user://logs"
-save_path.android="/storage/emulated/0/.atouch/logs"
 
 [rendering]
 
