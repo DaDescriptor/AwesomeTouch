@@ -18,7 +18,6 @@ class_name Key extends Button
 ## If not set will turn `noshift_text` into caps.
 @export var shift_text: String
 
-
 func _gui_input(event):
 	if !(event is InputEventScreenTouch):
 		return # other events don't have .pressed, will crash
@@ -47,4 +46,5 @@ func _gui_input(event):
 	if EditorGlobals.shift_state == 1:
 		# reset shift state if it was not caps locked
 		EditorGlobals.shift_state = 0
-
+	
+	EditorGlobals.key_pressed.emit(letter)

@@ -54,6 +54,23 @@ extends Node
 ## Editor cursor blink speed
 @export var blink_speed: float = 0
 
+## Syntax highlighting color scheme
+@export var syntax_colors = {
+	"keyword" = Color("CBA6F7"), 			# if, break, local, etc.
+	"operator" = Color("89DCEB"), 			# =, ~=, +, etc.
+	"var_name" = Color("F9E2AF"), 			# local >very_interesting_variable<
+	"escape" = Color("FAB387"), 			# \n
+	"builtin_method" = Color("F38BA8"), 	# >print<()
+	"brackets" = Color("A6E3A1"), 			# print>()<
+	"key" = Color("89B4FA"), 				# {>[<key>]< = value}
+	"table" = Color("F38BA8"), 				# >{<[key] = value>}<
+	"string" = Color("A6E321"), 			# ", ', [[[, ]]]
+	"comment" = Color("EC7086"), 			# -- hi this is a comment
+	"user_method" = Color("89B4FA") 		# function >hi<(), >hi<(), etc.
+}
+
 # SIGNALS
 ## Fires when shift_state is changed
 signal shift_state_changed(new_state: int)
+## Fires when a key is pressed
+signal key_pressed(key: String)

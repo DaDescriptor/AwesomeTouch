@@ -1,4 +1,5 @@
 extends Button
+## for your life
 
 
 static func copy_directory_recursively(p_from : String, p_to : String) -> void:
@@ -51,4 +52,4 @@ What should be done?
 			EditorGlobals.current_project["path"],
 			"/storage/emulated/0/lovegame"
 		)
-		# OS.execute("am", ["start", "-n org.love2d.android"])
+		OS.execute("am", ["start", "org.love2d.android"])

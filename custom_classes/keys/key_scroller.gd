@@ -22,7 +22,7 @@ func _gui_input(event):
 
 func _process(delta):
 	if !is_pressed:
-		print("not pressed")
+		# print("not pressed")
 		return
 	
 	var input = Input.get_last_mouse_velocity()

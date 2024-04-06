@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=43 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
 [ext_resource type="Script" path="res://custom_classes/editor_peek.gd" id="2_uplno"]
 [ext_resource type="Texture2D" uid="uid://0cf37phos3yl" path="res://icons/peek.svg" id="3_c4184"]
 [ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_i2wsj"]
+[ext_resource type="Script" path="res://custom_classes/run.gd" id="4_4sn7i"]
 [ext_resource type="Script" path="res://custom_classes/script_label.gd" id="4_8idgx"]
 [ext_resource type="Texture2D" uid="uid://bve2wbg3nwqj6" path="res://icons/redo.svg" id="4_y7unt"]
 [ext_resource type="Texture2D" uid="uid://ded2dnfgtjqis" path="res://icons/run.svg" id="4_yo7jx"]
@@ -31,6 +32,9 @@
 [ext_resource type="Script" path="res://custom_classes/keys/key_backspace.gd" id="21_e1i78"]
 [ext_resource type="Script" path="res://custom_classes/caret.gd" id="21_smq4f"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_return.gd" id="22_i3el5"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_multikey.gd" id="26_2602d"]
+[ext_resource type="Theme" uid="uid://o7240wsvebu" path="res://themes/overlay_theme.tres" id="26_aabmb"]
+[ext_resource type="Script" path="res://custom_classes/multikey.gd" id="27_vylkx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1tryx"]
 font_size = 40
@@ -178,6 +182,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("4_4sn7i")
 
 [node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek/Run"]
 layout_mode = 1
@@ -554,6 +559,8 @@ virtual_keyboard_enabled = false
 wrap_mode = 1
 autowrap_mode = 1
 scroll_fit_content_height = true
+minimap_draw = true
+minimap_width = 40
 caret_blink = true
 caret_draw_when_editable_disabled = true
 caret_mid_grapheme = true
@@ -699,6 +706,77 @@ script = ExtResource("7_ofdo7")
 layout_mode = 2
 size_flags_horizontal = 3
 text = "\""
+script = ExtResource("26_2602d")
+
+[node name="Multikey" type="Panel" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes"]
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(245, 345)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -330.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("26_aabmb")
+script = ExtResource("27_vylkx")
+
+[node name="CenterContainer" type="CenterContainer" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="Square Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "["
+script = ExtResource("7_ofdo7")
+letter = "["
+
+[node name="Square Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "]"
+script = ExtResource("7_ofdo7")
+letter = "]"
+
+[node name="Quote" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "'"
+script = ExtResource("7_ofdo7")
+letter = "'"
+
+[node name="Doublequote" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"highlighted_button"
+text = "\""
+script = ExtResource("7_ofdo7")
+letter = "\""
 
 [node name="BNM" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
 custom_minimum_size = Vector2(0, 150)
@@ -724,10 +802,63 @@ size_flags_horizontal = 3
 text = "m"
 script = ExtResource("7_ofdo7")
 
-[node name="Brackets" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+[node name="Dot" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "("
+text = "."
+script = ExtResource("26_2602d")
+
+[node name="Multikey" type="Panel" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot"]
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(245, 180)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -165.0
+offset_right = 18.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("26_aabmb")
+script = ExtResource("27_vylkx")
+
+[node name="CenterContainer" type="CenterContainer" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot/Multikey"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot/Multikey/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Comma" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = ","
+script = ExtResource("7_ofdo7")
+letter = ","
+
+[node name="Dot" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"highlighted_button"
+text = "."
+script = ExtResource("7_ofdo7")
+letter = "."
 
 [node name="Backspace" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
 custom_minimum_size = Vector2(100, 0)
@@ -745,6 +876,149 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "="
+script = ExtResource("26_2602d")
+
+[node name="Multikey" type="Panel" parent="EditorPanels/KeyboardRight/Keys/Special/Other"]
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -330.0
+offset_right = 250.0
+offset_bottom = 180.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("26_aabmb")
+script = ExtResource("27_vylkx")
+
+[node name="CenterContainer" type="CenterContainer" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="Plus" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "+"
+script = ExtResource("7_ofdo7")
+letter = "+"
+
+[node name="Minus" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "-"
+script = ExtResource("7_ofdo7")
+letter = "-"
+
+[node name="Square Brackets Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "["
+script = ExtResource("7_ofdo7")
+letter = "["
+
+[node name="Square Brackets Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "]"
+script = ExtResource("7_ofdo7")
+letter = "]"
+
+[node name="Colon" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+editor_description = "gd cologne reference"
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = ":"
+script = ExtResource("7_ofdo7")
+letter = ":"
+
+[node name="Equals" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"highlighted_button"
+text = "="
+script = ExtResource("7_ofdo7")
+letter = "="
+
+[node name="Brackets Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "("
+script = ExtResource("7_ofdo7")
+letter = "("
+
+[node name="Brackets Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = ")"
+script = ExtResource("7_ofdo7")
+letter = ")"
+
+[node name="Multiply" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "*"
+script = ExtResource("7_ofdo7")
+letter = "*"
+
+[node name="Divide" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "/"
+script = ExtResource("7_ofdo7")
+letter = "/"
+
+[node name="Figure Brackets Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "{"
+script = ExtResource("7_ofdo7")
+letter = "{"
+
+[node name="Figure Brackets Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "}"
+script = ExtResource("7_ofdo7")
+letter = "}"
 
 [node name="Return" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
 layout_mode = 2
