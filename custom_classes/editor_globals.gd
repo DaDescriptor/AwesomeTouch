@@ -52,7 +52,7 @@ extends Node
 @export var short_file: String = "FILE NOT LOADED"
 
 ## Editor cursor blink speed
-@export var blink_speed: float = 0
+@export var blink_speed: float = 0.5
 
 ## Syntax highlighting color scheme
 @export var syntax_colors = {
@@ -72,5 +72,9 @@ extends Node
 # SIGNALS
 ## Fires when shift_state is changed
 signal shift_state_changed(new_state: int)
+## Fires when a multikey is active
+signal multikey_active(key: String) # key is multikey activator's name
+## Fires when a selection is made
+signal multikey_exit(key: String)
 ## Fires when a key is pressed
 signal key_pressed(key: String)

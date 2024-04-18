@@ -1,4 +1,4 @@
-class_name ShiftKey extends Button
+class_name ShiftKey extends Key
 
 ## Icon displayed when shift is not pressed
 @export var icon_off: Texture2D
@@ -24,15 +24,15 @@ func update_icon(_value = null):
 
 func _ready():
 	EditorGlobals.shift_state_changed.connect(update_icon)
-
-func _gui_input(event):
-	if !(event is InputEventScreenTouch):
-		return # other events don't have .pressed
-	if !event.pressed:
-		return
-		# using this instead of _pressed() allows for multitouch
-		# with this the editor experience feels way smoother :)
 	
+	if !is_in_group("multikey"):
+		EditorGlobals.multikey_active.connect(deactivate)
+		EditorGlobals.multikey_exit.connect(activate)
+		# to fix issues when buttons behind the multikey can be pressed
+	else:
+		is_multikey = true
+
+func _button_process():
 	match EditorGlobals.shift_state:
 		# basically wrap around 0 and 1 but move to 2 if doubleclicked
 		0:

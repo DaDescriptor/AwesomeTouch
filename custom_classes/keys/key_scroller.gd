@@ -1,4 +1,4 @@
-class_name ScrollKey extends Button
+class_name ScrollKey extends Key
 ## the cool key which has the hand icon on it
 ## and serves as the scroll wheel for touchscreen users.
 ## this editor is designed for touchscreen lol.
@@ -13,6 +13,8 @@ var scrolled_amount: Vector2
 var is_pressed: bool = false
 
 func _gui_input(event):
+	# i could have modified _button_process to also pass event.pressed
+	# but i am too lazy to go over each script again
 	if !(event is InputEventScreenTouch):
 		return # other events don't have .pressed, will crash
 	

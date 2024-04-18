@@ -18,7 +18,12 @@ class_name Key extends Button
 ## If not set will turn `noshift_text` into caps.
 @export var shift_text: String
 
+var is_multikey: bool = false
+
 func _gui_input(event):
+	if disabled:
+		return
+	
 	if !(event is InputEventScreenTouch):
 		return # other events don't have .pressed, will crash
 	if !event.pressed:
@@ -29,7 +34,12 @@ func _gui_input(event):
 	if text_edit == null:
 		text_edit = EditorGlobals.text_edit
 		if text_edit == null:
-			print("EditorGlobals.text_edit is not set!")
+			push_error("EditorGlobals.text_edit is not set!")
+			return
+	
+	_button_process()
+
+func _button_process():
 	if letter == null or letter == "":
 		print("Letter is not set, trying to autoset..")
 		letter = text
@@ -48,3 +58,21 @@ func _gui_input(event):
 		EditorGlobals.shift_state = 0
 	
 	EditorGlobals.key_pressed.emit(letter)
+	if is_multikey:
+		EditorGlobals.multikey_exit.emit(letter)
+
+func activate(_key):
+	disabled = false
+	visible = !disabled
+
+func deactivate(_key):
+	disabled = true
+	visible = !disabled
+
+func _ready():
+	if !is_in_group("multikey"):
+		EditorGlobals.multikey_active.connect(deactivate)
+		EditorGlobals.multikey_exit.connect(activate)
+		# to fix issues when buttons behind the multikey can be pressed
+	else:
+		is_multikey = true

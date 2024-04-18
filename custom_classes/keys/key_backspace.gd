@@ -1,14 +1,7 @@
-class_name BackspaceKey extends Button
+class_name BackspaceKey extends Key
 
 
-func _gui_input(event):
-	if !(event is InputEventScreenTouch):
-		return # other events don't have .pressed
-	if !event.pressed:
-		return
-		# using this instead of _pressed() allows for multitouch
-		# with this the editor experience feels way smoother :)
-	
+func _button_process():
 	if EditorGlobals.text_edit.has_selection():
 		EditorGlobals.text_edit.delete_selection(-1)
 	else:

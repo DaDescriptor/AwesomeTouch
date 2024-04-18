@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dpufuq4f15wh3"]
+[gd_scene load_steps=48 format=3 uid="uid://dpufuq4f15wh3"]
 
 [ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
 [ext_resource type="Script" path="res://custom_classes/editor_peek.gd" id="2_uplno"]
@@ -31,10 +31,13 @@
 [ext_resource type="Script" path="res://custom_classes/keys/key_scroller.gd" id="18_xcf3j"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_backspace.gd" id="21_e1i78"]
 [ext_resource type="Script" path="res://custom_classes/caret.gd" id="21_smq4f"]
+[ext_resource type="Script" path="res://custom_classes/hint_multikey.gd" id="22_f4boj"]
 [ext_resource type="Script" path="res://custom_classes/keys/key_return.gd" id="22_i3el5"]
-[ext_resource type="Script" path="res://custom_classes/keys/key_multikey.gd" id="26_2602d"]
 [ext_resource type="Theme" uid="uid://o7240wsvebu" path="res://themes/overlay_theme.tres" id="26_aabmb"]
-[ext_resource type="Script" path="res://custom_classes/multikey.gd" id="27_vylkx"]
+[ext_resource type="Script" path="res://custom_classes/keys/multikey_root.gd" id="28_11tyv"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_release.gd" id="30_54cev"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_select.gd" id="34_yx2ny"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_deselect.gd" id="37_5tem0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1tryx"]
 font_size = 40
@@ -46,6 +49,10 @@ font_color = Color(0.803922, 0.839216, 0.956863, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_u1rli"]
 font_size = 24
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6g1o"]
+font_size = 32
 font_color = Color(0.803922, 0.839216, 0.956863, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g774v"]
@@ -72,6 +79,17 @@ corner_radius_bottom_left = 20
 [sub_resource type="LabelSettings" id="LabelSettings_svtxn"]
 font_size = 32
 font_color = Color(0.552941, 0.552941, 0.568627, 1)
+
+[sub_resource type="GDScript" id="GDScript_id8nf"]
+script/source = "extends Panel
+
+
+func _ready():
+	var hide = func(_key):
+		visible = false
+	
+	EditorGlobals.key_pressed.connect(hide)
+"
 
 [node name="Editor" type="Control"]
 layout_mode = 3
@@ -513,6 +531,26 @@ horizontal_alignment = 1
 script = ExtResource("10_3ph6r")
 your_label = "version "
 
+[node name="MultikeyModeContainer" type="MarginContainer" parent="EditorPanels/KeyboardLeft"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_f4boj")
+
+[node name="Label" type="Label" parent="EditorPanels/KeyboardLeft/MultikeyModeContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 1
+text = "You just pressed a multikey. Release your finger on one of the buttons to insert the key you want, or release it outside to cancel."
+label_settings = SubResource("LabelSettings_v6g1o")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="Code" type="Panel" parent="EditorPanels"]
 clip_contents = true
 custom_minimum_size = Vector2(600, 0)
@@ -705,8 +743,9 @@ script = ExtResource("7_ofdo7")
 [node name="Quotes" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
 layout_mode = 2
 size_flags_horizontal = 3
+keep_pressed_outside = true
 text = "\""
-script = ExtResource("26_2602d")
+script = ExtResource("28_11tyv")
 
 [node name="Multikey" type="Panel" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes"]
 visible = false
@@ -725,7 +764,7 @@ offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("26_aabmb")
-script = ExtResource("27_vylkx")
+script = SubResource("GDScript_id8nf")
 
 [node name="CenterContainer" type="CenterContainer" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey"]
 layout_mode = 1
@@ -741,41 +780,41 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 2
 
-[node name="Square Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer"]
+[node name="Square Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "["
-script = ExtResource("7_ofdo7")
-letter = "["
+text = "[["
+script = ExtResource("30_54cev")
+letter = "[["
 
-[node name="Square Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer"]
+[node name="Square Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "]"
-script = ExtResource("7_ofdo7")
-letter = "]"
+text = "]]"
+script = ExtResource("30_54cev")
+letter = "]]"
 
-[node name="Quote" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer"]
+[node name="Quote" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "'"
-script = ExtResource("7_ofdo7")
+script = ExtResource("30_54cev")
 letter = "'"
 
-[node name="Doublequote" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer"]
+[node name="Doublequote" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL/Quotes/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_type_variation = &"highlighted_button"
 text = "\""
-script = ExtResource("7_ofdo7")
+script = ExtResource("30_54cev")
 letter = "\""
 
 [node name="BNM" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
@@ -805,8 +844,9 @@ script = ExtResource("7_ofdo7")
 [node name="Dot" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
 layout_mode = 2
 size_flags_horizontal = 3
+keep_pressed_outside = true
 text = "."
-script = ExtResource("26_2602d")
+script = ExtResource("28_11tyv")
 
 [node name="Multikey" type="Panel" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot"]
 visible = false
@@ -825,7 +865,7 @@ offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("26_aabmb")
-script = ExtResource("27_vylkx")
+script = SubResource("GDScript_id8nf")
 
 [node name="CenterContainer" type="CenterContainer" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot/Multikey"]
 layout_mode = 1
@@ -841,23 +881,23 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="Comma" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot/Multikey/CenterContainer/GridContainer"]
+[node name="Comma" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = ","
-script = ExtResource("7_ofdo7")
+script = ExtResource("30_54cev")
 letter = ","
 
-[node name="Dot" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot/Multikey/CenterContainer/GridContainer"]
+[node name="Dot" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM/Dot/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_type_variation = &"highlighted_button"
 text = "."
-script = ExtResource("7_ofdo7")
+script = ExtResource("30_54cev")
 letter = "."
 
 [node name="Backspace" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
@@ -875,8 +915,9 @@ theme_override_constants/separation = 10
 [node name="Other" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+keep_pressed_outside = true
 text = "="
-script = ExtResource("26_2602d")
+script = ExtResource("28_11tyv")
 
 [node name="Multikey" type="Panel" parent="EditorPanels/KeyboardRight/Keys/Special/Other"]
 visible = false
@@ -894,7 +935,7 @@ offset_bottom = 180.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("26_aabmb")
-script = ExtResource("27_vylkx")
+script = SubResource("GDScript_id8nf")
 
 [node name="CenterContainer" type="CenterContainer" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey"]
 layout_mode = 1
@@ -910,117 +951,124 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 4
 
-[node name="Plus" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Plus" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = "+"
-script = ExtResource("7_ofdo7")
-letter = "+"
+script = ExtResource("30_54cev")
 
-[node name="Minus" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Minus" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = "-"
-script = ExtResource("7_ofdo7")
-letter = "-"
+script = ExtResource("30_54cev")
 
-[node name="Square Brackets Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Square Brackets Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = "["
-script = ExtResource("7_ofdo7")
-letter = "["
+script = ExtResource("30_54cev")
 
-[node name="Square Brackets Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Square Brackets Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = "]"
-script = ExtResource("7_ofdo7")
-letter = "]"
+script = ExtResource("30_54cev")
 
-[node name="Colon" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Colon" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 editor_description = "gd cologne reference"
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = ":"
-script = ExtResource("7_ofdo7")
-letter = ":"
+script = ExtResource("30_54cev")
 
-[node name="Equals" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Equals" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_type_variation = &"highlighted_button"
+keep_pressed_outside = true
 text = "="
-script = ExtResource("7_ofdo7")
-letter = "="
+script = ExtResource("30_54cev")
 
-[node name="Brackets Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Brackets Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = "("
-script = ExtResource("7_ofdo7")
-letter = "("
+script = ExtResource("30_54cev")
 
-[node name="Brackets Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Brackets Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = ")"
-script = ExtResource("7_ofdo7")
-letter = ")"
+script = ExtResource("30_54cev")
 
-[node name="Multiply" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Multiply" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = "*"
-script = ExtResource("7_ofdo7")
-letter = "*"
+script = ExtResource("30_54cev")
 
-[node name="Divide" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Divide" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = "/"
-script = ExtResource("7_ofdo7")
-letter = "/"
+script = ExtResource("30_54cev")
 
-[node name="Figure Brackets Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Figure Brackets Left" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = "{"
-script = ExtResource("7_ofdo7")
-letter = "{"
+script = ExtResource("30_54cev")
 
-[node name="Figure Brackets Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer"]
+[node name="Figure Brackets Right" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special/Other/Multikey/CenterContainer/GridContainer" groups=["multikey"]]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+keep_pressed_outside = true
 text = "}"
-script = ExtResource("7_ofdo7")
-letter = "}"
+script = ExtResource("30_54cev")
 
 [node name="Return" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("11_m5lhl")
+icon_alignment = 1
+script = ExtResource("22_i3el5")
+
+[node name="Tab" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("11_m5lhl")
@@ -1037,9 +1085,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("12_nuces")
 icon_alignment = 1
+script = ExtResource("34_yx2ny")
 
 [node name="Deselect" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("13_nlbao")
 icon_alignment = 1
+script = ExtResource("37_5tem0")
