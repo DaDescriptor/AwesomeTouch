@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://b67v2kruwwbi6"]
+
+[ext_resource type="Theme" uid="uid://c02hpjaridlrg" path="res://themes/keyboard_theme.tres" id="1_bb6pb"]
+[ext_resource type="Script" path="res://custom_classes/keys/key.gd" id="2_pr5p0"]
+
+[node name="Multikey" type="Panel"]
+custom_minimum_size = Vector2(245, 345)
+offset_left = -130.0
+offset_top = -180.0
+offset_right = 115.0
+offset_bottom = 165.0
+theme = ExtResource("1_bb6pb")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="Key2" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_pr5p0")
+
+[node name="Key3" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_pr5p0")
+
+[node name="Key4" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_pr5p0")
+
+[node name="Key" type="Button" parent="CenterContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_pr5p0")

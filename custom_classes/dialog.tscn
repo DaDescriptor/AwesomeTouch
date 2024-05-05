@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgi4gsuo3nyib"]
+
+[ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="1_guhdl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d83oj"]
+font_size = 64
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[node name="Dialog" type="Control"]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_guhdl")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Among Us"
+label_settings = SubResource("LabelSettings_d83oj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Body" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.803922, 0.839216, 0.956863, 1)
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
+text = "Sussy amongus"
+
+[node name="Options" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+columns = 3

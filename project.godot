@@ -1,0 +1,60 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Awesome Touch"
+config/description="Awesome Touch is a Love2D IDE for Android."
+config/version="Prototype 1"
+run/main_scene="res://scenes/project_picker.tscn"
+config/auto_accept_quit=false
+config/quit_on_go_back=false
+config/features=PackedStringArray("4.3", "Mobile")
+run/low_processor_mode=true
+boot_splash/bg_color=Color(0.0666667, 0.0666667, 0.105882, 1)
+boot_splash/image="res://splash.png"
+boot_splash/fullsize=false
+config/icon="res://icon.svg"
+config/version.debug="Prototype 1 [DEBUG]"
+
+[autoload]
+
+EditorGlobals="*res://custom_classes/editor_globals.gd"
+DialogManager="*res://custom_classes/dialog.gd"
+Infobox="*res://custom_classes/infobox.gd"
+Fatal="*res://custom_classes/fatal.gd"
+ConfirmExit="res://custom_classes/confirm_exit.gd"
+
+[debug]
+
+gdscript/warnings/enable=false
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+
+[dotnet]
+
+project/assembly_name="Awesome Touch"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/locale_filter_mode=0
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

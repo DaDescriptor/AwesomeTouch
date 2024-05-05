@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://c21tgrumql0de"]
+
+[ext_resource type="Script" path="res://custom_classes/project_button.gd" id="1_0lfgq"]
+[ext_resource type="FontFile" uid="uid://cn3o2fc0xoyos" path="res://fonts/FiraMono-Medium.ttf" id="1_6twbu"]
+[ext_resource type="Texture2D" uid="uid://dbblcyq3f28yo" path="res://icons/delete.svg" id="2_ha5eh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6my4b"]
+bg_color = Color(0.270588, 0.278431, 0.352941, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_m88qv"]
+font = ExtResource("1_6twbu")
+font_size = 32
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[node name="Project" type="Panel"]
+custom_minimum_size = Vector2(0, 100)
+offset_right = 1920.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6my4b")
+script = ExtResource("1_0lfgq")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = -82.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "/storage/emulated/0/"
+label_settings = SubResource("LabelSettings_m88qv")
+vertical_alignment = 1
+
+[node name="Delete" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = ExtResource("2_ha5eh")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Open" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="pressed" from="Delete" to="." method="delete_project"]
+[connection signal="pressed" from="Open" to="." method="open_project"]

@@ -1,0 +1,762 @@
+[gd_scene load_steps=35 format=3 uid="uid://dpufuq4f15wh3"]
+
+[ext_resource type="Theme" uid="uid://dqhgsfkjmxtry" path="res://themes/topbar_theme.tres" id="2_8ib8j"]
+[ext_resource type="Texture2D" uid="uid://0cf37phos3yl" path="res://icons/peek.svg" id="3_c4184"]
+[ext_resource type="Texture2D" uid="uid://cedcc5bsyxaen" path="res://icons/undo.svg" id="3_i2wsj"]
+[ext_resource type="Script" path="res://custom_classes/script_label.gd" id="4_8idgx"]
+[ext_resource type="Texture2D" uid="uid://bve2wbg3nwqj6" path="res://icons/redo.svg" id="4_y7unt"]
+[ext_resource type="Texture2D" uid="uid://ded2dnfgtjqis" path="res://icons/run.svg" id="4_yo7jx"]
+[ext_resource type="Theme" uid="uid://c02hpjaridlrg" path="res://themes/keyboard_theme.tres" id="5_hk8dr"]
+[ext_resource type="Texture2D" uid="uid://cb3mk3xh3gn5i" path="res://icons/shift.svg" id="6_l03jd"]
+[ext_resource type="Script" path="res://custom_classes/keys/key.gd" id="7_ofdo7"]
+[ext_resource type="Texture2D" uid="uid://bailgidv6ut5k" path="res://icons/spacebar.svg" id="7_upwuq"]
+[ext_resource type="Texture2D" uid="uid://daswy8ht8fc2x" path="res://icons/atouch-topbar.png" id="9_grnas"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_shift.gd" id="9_uiaqm"]
+[ext_resource type="Script" path="res://custom_classes/version.gd" id="10_3ph6r"]
+[ext_resource type="Texture2D" uid="uid://8hrbmo3ojvh1" path="res://icons/backspace.svg" id="10_6dmeg"]
+[ext_resource type="Texture2D" uid="uid://v7furbhpgvl5" path="res://icons/shift_on.svg" id="10_hbwpk"]
+[ext_resource type="Texture2D" uid="uid://b0ho02vc85io6" path="res://icons/caps_lock.svg" id="10_skwhg"]
+[ext_resource type="FontFile" uid="uid://bnqcwp4fr70uq" path="res://fonts/FiraMono-Regular.ttf" id="10_yqrjh"]
+[ext_resource type="Script" path="res://custom_classes/line_counter.gd" id="11_2rc23"]
+[ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="11_bbu1r"]
+[ext_resource type="Texture2D" uid="uid://0w4d1ppa2q8e" path="res://icons/enter.svg" id="11_m5lhl"]
+[ext_resource type="Texture2D" uid="uid://c63x1iwexeukj" path="res://icons/left_click.svg" id="12_nuces"]
+[ext_resource type="Texture2D" uid="uid://cm7wjbsfo00nn" path="res://icons/deselect.svg" id="13_nlbao"]
+[ext_resource type="Texture2D" uid="uid://dwoqd03gxbfit" path="res://icons/right_click.svg" id="14_2hh4e"]
+[ext_resource type="Script" path="res://custom_classes/code_textedit.gd" id="16_hxs6d"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_backspace.gd" id="21_e1i78"]
+[ext_resource type="Script" path="res://custom_classes/caret.gd" id="21_smq4f"]
+[ext_resource type="Script" path="res://custom_classes/keys/key_return.gd" id="22_i3el5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1tryx"]
+font_size = 40
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fosag"]
+font_size = 40
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u1rli"]
+font_size = 24
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g774v"]
+bg_color = Color(0.0666667, 0.0666667, 0.105882, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_c8pro"]
+line_spacing = 0.0
+font = ExtResource("10_yqrjh")
+font_size = 32
+font_color = Color(0.486275, 0.517647, 0.611765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp8tu"]
+bg_color = Color(0.0666667, 0.0666667, 0.105882, 1)
+draw_center = false
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_svtxn"]
+font_size = 32
+font_color = Color(0.552941, 0.552941, 0.568627, 1)
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.180392, 1)
+
+[node name="Topbar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme = ExtResource("2_8ib8j")
+
+[node name="TopbarContainer" type="HBoxContainer" parent="Topbar"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_right = -10.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="LeftShortcuts" type="HBoxContainer" parent="Topbar/TopbarContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="File" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/LeftShortcuts/File"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "File"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Edit" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/LeftShortcuts/Edit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Edit"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Run Peek" type="HBoxContainer" parent="Topbar/TopbarContainer/LeftShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Peek" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek/Peek"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_c4184")
+
+[node name="Run" type="Button" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/LeftShortcuts/Run Peek/Run"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_yo7jx")
+
+[node name="ScriptName" type="Label" parent="Topbar/TopbarContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "veryLongScriptName.lua"
+label_settings = SubResource("LabelSettings_fosag")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_8idgx")
+
+[node name="RightShortcuts" type="HBoxContainer" parent="Topbar/TopbarContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Undo Redo" type="HBoxContainer" parent="Topbar/TopbarContainer/RightShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Undo" type="Button" parent="Topbar/TopbarContainer/RightShortcuts/Undo Redo"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/RightShortcuts/Undo Redo/Undo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_i2wsj")
+
+[node name="Redo" type="Button" parent="Topbar/TopbarContainer/RightShortcuts/Undo Redo"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Icon" type="TextureRect" parent="Topbar/TopbarContainer/RightShortcuts/Undo Redo/Redo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -25.0
+offset_right = 26.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_y7unt")
+
+[node name="Quit" type="Button" parent="Topbar/TopbarContainer/RightShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save" type="Button" parent="Topbar/TopbarContainer/RightShortcuts"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Topbar/TopbarContainer/RightShortcuts/Save"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Save"
+label_settings = SubResource("LabelSettings_1tryx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EditorPanels" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 80.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="KeyboardLeft" type="Panel" parent="EditorPanels"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("5_hk8dr")
+
+[node name="Keys" type="VBoxContainer" parent="EditorPanels/KeyboardLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="12345" type="HBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="1" type="Button" parent="EditorPanels/KeyboardLeft/Keys/12345"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+script = ExtResource("7_ofdo7")
+
+[node name="2" type="Button" parent="EditorPanels/KeyboardLeft/Keys/12345"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2"
+script = ExtResource("7_ofdo7")
+
+[node name="3" type="Button" parent="EditorPanels/KeyboardLeft/Keys/12345"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3"
+script = ExtResource("7_ofdo7")
+
+[node name="4" type="Button" parent="EditorPanels/KeyboardLeft/Keys/12345"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4"
+script = ExtResource("7_ofdo7")
+
+[node name="5" type="Button" parent="EditorPanels/KeyboardLeft/Keys/12345"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+script = ExtResource("7_ofdo7")
+
+[node name="QWERT" type="HBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Q" type="Button" parent="EditorPanels/KeyboardLeft/Keys/QWERT"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "q"
+script = ExtResource("7_ofdo7")
+
+[node name="W" type="Button" parent="EditorPanels/KeyboardLeft/Keys/QWERT"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "w"
+script = ExtResource("7_ofdo7")
+
+[node name="E" type="Button" parent="EditorPanels/KeyboardLeft/Keys/QWERT"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "e"
+script = ExtResource("7_ofdo7")
+
+[node name="R" type="Button" parent="EditorPanels/KeyboardLeft/Keys/QWERT"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "r"
+script = ExtResource("7_ofdo7")
+
+[node name="T" type="Button" parent="EditorPanels/KeyboardLeft/Keys/QWERT"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "t"
+script = ExtResource("7_ofdo7")
+
+[node name="ASDFG" type="HBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="A" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "a"
+script = ExtResource("7_ofdo7")
+
+[node name="S" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "s"
+script = ExtResource("7_ofdo7")
+
+[node name="D" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "d"
+script = ExtResource("7_ofdo7")
+
+[node name="F" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "f"
+script = ExtResource("7_ofdo7")
+
+[node name="G" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ASDFG"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "g"
+script = ExtResource("7_ofdo7")
+
+[node name="ZXCV" type="HBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Shift" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("6_l03jd")
+icon_alignment = 1
+script = ExtResource("9_uiaqm")
+icon_off = ExtResource("6_l03jd")
+icon_on = ExtResource("10_hbwpk")
+icon_caps = ExtResource("10_skwhg")
+
+[node name="Z" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "z"
+script = ExtResource("7_ofdo7")
+
+[node name="X" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "x"
+script = ExtResource("7_ofdo7")
+
+[node name="C" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "c"
+script = ExtResource("7_ofdo7")
+
+[node name="V" type="Button" parent="EditorPanels/KeyboardLeft/Keys/ZXCV"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "v"
+script = ExtResource("7_ofdo7")
+
+[node name="Special" type="HBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Space" type="Button" parent="EditorPanels/KeyboardLeft/Keys/Special"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("7_upwuq")
+icon_alignment = 1
+script = ExtResource("7_ofdo7")
+letter = " "
+shifted_letter = " "
+
+[node name="Autocomplete" type="VBoxContainer" parent="EditorPanels/KeyboardLeft/Keys"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 10
+
+[node name="Logo" type="TextureRect" parent="EditorPanels/KeyboardLeft/Keys/Autocomplete"]
+layout_mode = 2
+texture = ExtResource("9_grnas")
+
+[node name="Version" type="Label" parent="EditorPanels/KeyboardLeft/Keys/Autocomplete"]
+layout_mode = 2
+text = "version unknown :("
+label_settings = SubResource("LabelSettings_u1rli")
+horizontal_alignment = 1
+script = ExtResource("10_3ph6r")
+your_label = "version "
+
+[node name="Code" type="Panel" parent="EditorPanels"]
+clip_contents = true
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_g774v")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EditorPanels/Code"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorPanels/Code/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Lines" type="Label" parent="EditorPanels/Code/ScrollContainer/HBoxContainer" node_paths=PackedStringArray("text_edit")]
+layout_mode = 2
+size_flags_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_c8pro")
+horizontal_alignment = 2
+script = ExtResource("11_2rc23")
+text_edit = NodePath("../Textbox")
+
+[node name="Textbox" type="TextEdit" parent="EditorPanels/Code/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("11_bbu1r")
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_bp8tu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bp8tu")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_bp8tu")
+placeholder_text = "Welcome to Awesome Touch :)"
+context_menu_enabled = false
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+caret_draw_when_editable_disabled = true
+caret_mid_grapheme = true
+draw_tabs = true
+script = ExtResource("16_hxs6d")
+
+[node name="Caret" type="Control" parent="EditorPanels/Code"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("21_smq4f")
+
+[node name="Label" type="Label" parent="EditorPanels/Code/Caret"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "_"
+label_settings = SubResource("LabelSettings_svtxn")
+
+[node name="KeyboardRight" type="Panel" parent="EditorPanels"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("5_hk8dr")
+
+[node name="Keys" type="VBoxContainer" parent="EditorPanels/KeyboardRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="67890" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="6" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "6"
+script = ExtResource("7_ofdo7")
+
+[node name="7" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "7"
+script = ExtResource("7_ofdo7")
+
+[node name="8" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "8"
+script = ExtResource("7_ofdo7")
+
+[node name="9" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9"
+script = ExtResource("7_ofdo7")
+
+[node name="0" type="Button" parent="EditorPanels/KeyboardRight/Keys/67890"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+script = ExtResource("7_ofdo7")
+
+[node name="YUIOP" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Y" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "y"
+script = ExtResource("7_ofdo7")
+
+[node name="U" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "u"
+script = ExtResource("7_ofdo7")
+
+[node name="I" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "i"
+script = ExtResource("7_ofdo7")
+
+[node name="O" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "o"
+script = ExtResource("7_ofdo7")
+
+[node name="P" type="Button" parent="EditorPanels/KeyboardRight/Keys/YUIOP"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "p"
+script = ExtResource("7_ofdo7")
+
+[node name="HJKL" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="H" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "h"
+script = ExtResource("7_ofdo7")
+
+[node name="J" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "j"
+script = ExtResource("7_ofdo7")
+
+[node name="K" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "k"
+script = ExtResource("7_ofdo7")
+
+[node name="L" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "l"
+script = ExtResource("7_ofdo7")
+
+[node name="Quotes" type="Button" parent="EditorPanels/KeyboardRight/Keys/HJKL"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "\""
+
+[node name="BNM" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="B" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "b"
+icon_alignment = 1
+script = ExtResource("7_ofdo7")
+
+[node name="N" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "n"
+script = ExtResource("7_ofdo7")
+
+[node name="M" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "m"
+script = ExtResource("7_ofdo7")
+
+[node name="Brackets" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "("
+
+[node name="Backspace" type="Button" parent="EditorPanels/KeyboardRight/Keys/BNM"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+icon = ExtResource("10_6dmeg")
+icon_alignment = 1
+script = ExtResource("21_e1i78")
+
+[node name="Special" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Other" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "="
+
+[node name="Return" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("11_m5lhl")
+icon_alignment = 1
+script = ExtResource("22_i3el5")
+
+[node name="Special 2" type="HBoxContainer" parent="EditorPanels/KeyboardRight/Keys"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Left Click" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("12_nuces")
+icon_alignment = 1
+
+[node name="Deselect" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("13_nlbao")
+icon_alignment = 1
+
+[node name="Right Click" type="Button" parent="EditorPanels/KeyboardRight/Keys/Special 2"]
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("14_2hh4e")
+icon_alignment = 1

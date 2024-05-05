@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://coi243bbrdw1w"]
+
+[ext_resource type="Theme" uid="uid://cg5c5am7erjn3" path="res://themes/default_theme.tres" id="1_dx76f"]
+[ext_resource type="Script" path="res://custom_classes/location_manager.gd" id="2_xl776"]
+[ext_resource type="Texture2D" uid="uid://dkqq30qcir0et" path="res://icons/directory.svg" id="2_y77u7"]
+[ext_resource type="Theme" uid="uid://ba1c1w12o643t" path="res://themes/filepick_theme.tres" id="3_et2it"]
+[ext_resource type="PackedScene" uid="uid://bv03pptpeilx0" path="res://custom_classes/dialog_button.tscn" id="5_ysl1s"]
+[ext_resource type="Script" path="res://custom_classes/free_parent.gd" id="6_33a2a"]
+[ext_resource type="Script" path="res://custom_classes/new_project.gd" id="6_umhae"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3101"]
+font_size = 96
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xpw1"]
+font_size = 64
+font_color = Color(0.803922, 0.839216, 0.956863, 1)
+
+[node name="ProjectDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dx76f")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "New project"
+label_settings = SubResource("LabelSettings_l3101")
+horizontal_alignment = 1
+
+[node name="Body" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Name" type="HBoxContainer" parent="VBoxContainer/Body"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+
+[node name="Key" type="Label" parent="VBoxContainer/Body/Name"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Name"
+label_settings = SubResource("LabelSettings_0xpw1")
+
+[node name="Value" type="LineEdit" parent="VBoxContainer/Body/Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+placeholder_text = "My Awesome Project"
+flat = true
+
+[node name="Location" type="HBoxContainer" parent="VBoxContainer/Body"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+script = ExtResource("2_xl776")
+
+[node name="FileDialog" type="FileDialog" parent="VBoxContainer/Body/Location"]
+mode = 3
+title = "Open a Directory"
+initial_position = 2
+size = Vector2i(1920, 1080)
+unresizable = true
+borderless = true
+always_on_top = true
+min_size = Vector2i(960, 540)
+content_scale_size = Vector2i(1920, 1080)
+content_scale_aspect = 1
+content_scale_stretch = 1
+theme = ExtResource("3_et2it")
+ok_button_text = "Выбрать текущую папку"
+mode_overrides_title = false
+file_mode = 2
+access = 2
+root_subfolder = "/storage/emulated/0/"
+show_hidden_files = true
+
+[node name="Key" type="Label" parent="VBoxContainer/Body/Location"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Location"
+label_settings = SubResource("LabelSettings_0xpw1")
+
+[node name="Value" type="LineEdit" parent="VBoxContainer/Body/Location"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+placeholder_text = "/storage/emulated/0/awesome-project/"
+flat = true
+
+[node name="Set" type="Button" parent="VBoxContainer/Body/Location"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+icon = ExtResource("2_y77u7")
+flat = true
+icon_alignment = 1
+
+[node name="Options" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+columns = 2
+
+[node name="Create" parent="VBoxContainer/Options" node_paths=PackedStringArray("project_name", "project_location") instance=ExtResource("5_ysl1s")]
+layout_mode = 2
+text = "Create"
+script = ExtResource("6_umhae")
+project_name = NodePath("../../Body/Name/Value")
+project_location = NodePath("../../Body/Location/Value")
+
+[node name="Cancel" parent="VBoxContainer/Options" node_paths=PackedStringArray("node") instance=ExtResource("5_ysl1s")]
+layout_mode = 2
+text = "Cancel"
+script = ExtResource("6_33a2a")
+node = NodePath("../../..")
+
+[connection signal="dir_selected" from="VBoxContainer/Body/Location/FileDialog" to="VBoxContainer/Body/Location" method="on_dir_selected"]
+[connection signal="pressed" from="VBoxContainer/Body/Location/Set" to="VBoxContainer/Body/Location" method="show_picker"]

@@ -1,0 +1,68 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://o7240wsvebu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eo38n"]
+bg_color = Color(0.192157, 0.196078, 0.266667, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfh2w"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0666667, 0.0666667, 0.105882, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.803922, 0.839216, 0.956863, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ma18"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.345098, 0.356863, 0.439216, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.803922, 0.839216, 0.956863, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riku8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.192157, 0.196078, 0.266667, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.803922, 0.839216, 0.956863, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 4
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxFlat_eo38n")
+highlighted_button/base_type = &"Button"
+highlighted_button/styles/disabled = SubResource("StyleBoxFlat_pfh2w")
+highlighted_button/styles/focus = SubResource("StyleBoxFlat_1ma18")
+highlighted_button/styles/hover = SubResource("StyleBoxFlat_1ma18")
+highlighted_button/styles/normal = SubResource("StyleBoxFlat_1ma18")
+highlighted_button/styles/pressed = SubResource("StyleBoxFlat_riku8")
