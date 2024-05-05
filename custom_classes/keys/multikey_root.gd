@@ -3,6 +3,11 @@ extends Key
 
 var multikey
 
+func activate(_key):
+	self_modulate = Color(1.0, 1.0, 1.0, 1.0)
+func deactivate(_key):
+	self_modulate = Color(1.0, 1.0, 1.0, 0.0)
+
 func _gui_input(event):
 	if disabled:
 		return
@@ -19,6 +24,7 @@ func _gui_input(event):
 		_button_process()
 	else:
 		multikey.visible = false
+		self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 		EditorGlobals.multikey_exit.emit(name)
 
 func _button_process():
@@ -28,8 +34,6 @@ func _button_process():
 		push_error("Multikey does not exist! (key ", name, ")")
 	
 	multikey.visible = true
+	self_modulate = Color(1.0, 1.0, 1.0, 0.0)
 	
 	EditorGlobals.multikey_active.emit(name)
-	
-	visible = true
-	disabled = false

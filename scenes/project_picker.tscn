@@ -19,11 +19,11 @@ default_font = ExtResource("1_pscn4")
 font_size = 50
 font_color = Color(0.803922, 0.839216, 0.956863, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ib2ka"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dcn1p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5m85"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ib2ka"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k8ynq"]
 font_size = 64
@@ -156,9 +156,9 @@ offset_right = -1658.0
 layout_mode = 2
 theme = ExtResource("5_xy6mk")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ib2ka")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dcn1p")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_i5m85")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ib2ka")
 placeholder_text = "Search..."
 expand_to_text_length = true
 select_all_on_focus = true

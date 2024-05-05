@@ -3,18 +3,18 @@ extends Button
 
 
 static func copy_directory_recursively(p_from : String, p_to : String) -> void:
-	var directory = DirAccess.new # stupid 5 year old snippeds of code
-	if not directory.dir_exists(p_to):
-		directory.make_dir_recursive(p_to)
-	if directory.open(p_from) == OK:
-		directory.list_dir_begin(true)
-		var file_name = directory.get_next()
+	if not DirAccess.dir_exists_absolute(p_to):
+		DirAccess.make_dir_recursive_absolute(p_to)
+	if DirAccess.open(p_from):
+		var from = DirAccess.open(p_from)
+		from.list_dir_begin()
+		var file_name = from.get_next()
 		while (file_name != "" && file_name != "." && file_name != ".."):
-			if directory.current_is_dir():
+			if from.current_is_dir():
 				copy_directory_recursively(p_from + "/" + file_name, p_to + "/" + file_name)
 			else:
-				directory.copy(p_from + "/" + file_name, p_to + "/" + file_name)
-			file_name = directory.get_next()
+				from.copy(p_from + "/" + file_name, p_to + "/" + file_name)
+			file_name = from.get_next()
 	else:
 		push_warning("Error copying " + p_from + " to " + p_to)
 
@@ -25,7 +25,6 @@ func _pressed():
 	if DirAccess.dir_exists_absolute("/storage/emulated/0/lovegame"): # path for love2d game
 		operate = false
 		var decide = func(opinion):
-			operate = true
 			if opinion == "overwrite":
 				DirAccess.remove_absolute("/storage/emulated/0/lovegame")
 			elif opinion == "rename":
@@ -35,6 +34,7 @@ func _pressed():
 				)
 			else:
 				cancel = true
+			operate = true
 		
 		DialogManager.push_dialog("Conflict",
 "Directory ~/lovegame already exists.
@@ -52,4 +52,4 @@ What should be done?
 			EditorGlobals.current_project["path"],
 			"/storage/emulated/0/lovegame"
 		)
-		OS.execute("am", ["start", "org.love2d.android"])
+		OS.execute("/bin/am", ["start", "org.love2d.android"])
